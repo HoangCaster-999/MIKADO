@@ -24,6 +24,8 @@ Rồi vào http://127.0.0.1:8000.
 | `assets/site.css` | Toàn bộ giao diện + responsive + bản in. |
 | `public/images/` | Ảnh gốc chị gửi (tên tiếng Việt, giữ nguyên, không dùng trên web). |
 | `public/images/web/` | Ảnh dùng trên web, định dạng **.png**. **Trang web chỉ dùng thư mục này.** 30 ảnh món (~42,9 MB) + 5 logo thanh toán + 1 QR (~98 KB). |
+| `public/brand/` | Logo và icon (xem mục dưới). |
+| `vercel.json` | `outputDirectory: "."` — bắt Vercel lấy thư mục gốc làm gốc web. **Không xóa**, xóa là trang 404 trở lại. |
 | `MIKADO_Menu .pdf` | Menu gốc, là nguồn của toàn bộ dữ liệu. Không được trang web tải (33 MB). |
 
 ## Sửa thực đơn
@@ -64,6 +66,28 @@ chung hằng số `WOK` ở đầu file — sửa một chỗ là đổi cho c�
 
 Phân biệt này là cố ý: Mikado Bowl có lựa chọn Tofu nhưng cũng có cá hồi, nên không
 được gắn nhãn là món chay.
+
+## Logo (`public/brand/`)
+
+Tất cả được render từ đúng font (Anton) và màu (`#f1b40e`) mà website đang dùng,
+nên khớp tuyệt đối với logo trên trang.
+
+| File | Kích thước | Dùng cho |
+| --- | --- | --- |
+| `logo-mikado.png` | 2031×1137 | **Logo chính.** Nền tối, dùng được ở mọi nơi |
+| `logo-mikado-transparent.png` | 2031×1137 | Nền trong suốt — chỉ đặt trên nền TỐI (chữ phụ màu trắng) |
+| `logo-mikado-fuer-hellen-hintergrund.png` | 2031×1137 | Nền trong suốt — đặt trên nền SÁNG (chữ phụ màu đen) |
+| `icon-512.png` | 512×512 | Ảnh đại diện (Facebook, Google Business), app icon |
+| `apple-touch-icon-180.png` | 180×180 | Icon khi lưu trang vào màn hình chính iPhone |
+| `favicon-32.png` | 32×32 | Favicon trên tab trình duyệt |
+| `og-image.png` | 1200×630 | Ảnh hiện ra khi chia sẻ link lên Facebook/Zalo |
+
+Tạo lại khi cần: chạy `scratchpad/make-logo.js` bằng Playwright (cần server
+`python -m http.server 8123` đang chạy để lấy ảnh món cho `og-image.png`).
+
+Thẻ `og:image` đang dùng **đường dẫn tương đối** vì tên miền cuối chưa chốt.
+Khi có tên miền chính thức nên đổi sang URL tuyệt đối
+(`https://ten-mien.de/public/brand/og-image.png`) cho chắc ăn với mọi mạng xã hội.
 
 ## Bảng màu & giao diện
 
@@ -169,5 +193,6 @@ thật (mì gạo + hải sản, 16,90 €). Menu cũng không có món số 41,
 43–49, 75–79, 84–89 — đúng như bản in.
 
 Các số khác giữ nguyên theo menu, kể cả cách đánh số của sushi (510, 610–612).
-#   M I K A D O  
+#   M I K A D O 
+ 
  
