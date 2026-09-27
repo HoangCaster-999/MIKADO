@@ -34,6 +34,12 @@
 </head>
 <body>
 
+<svg class="icon-sprite" aria-hidden="true">
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.03 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.27h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.26.15 4.78 1.69 4.93 4.93.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.67 4.77-4.93 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.27-.15-4.78-1.7-4.93-4.93-.06-1.27-.07-1.65-.07-4.85s.02-3.58.07-4.85c.15-3.23 1.67-4.77 4.93-4.92 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></symbol>
+  <symbol id="icon-location" viewBox="0 0 24 24"><path d="M12 1a8 8 0 0 0-8 8c0 5.95 8 14 8 14s8-8.05 8-14a8 8 0 0 0-8-8zm0 11.85A3.85 3.85 0 1 1 12 5a3.85 3.85 0 0 1 0 7.85z"/></symbol>
+</svg>
+
 <header class="nav" id="nav">
   <div class="nav__inner">
     <a class="brand" href="#top" aria-label="MIKADO Sushi Bar &amp; Asian Restaurant – zur Startseite">
@@ -375,14 +381,14 @@
         <ul class="facts">
           <li><b>Adresse</b><span><a href="https://share.google/xjBxgUn1EsnJE5B0c" target="_blank" rel="noopener">Leerer Landstraße 1<br>26603 Aurich</a></span></li>
           <li><b>Telefon</b><span><a href="tel:+4949419901764">04941 990 1764</a></span></li>
-          <li><b>Social Media</b><span><a href="https://www.facebook.com/profile.php?id=61594717379834" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/mikadosushibarasianrestaurant/" target="_blank" rel="noopener">Instagram</a></span></li>
+          <li><b>Social Media</b><span class="social-links"><a class="social-link" href="https://www.facebook.com/profile.php?id=61594717379834" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-facebook"></use></svg>Facebook</a><a class="social-link" href="https://www.instagram.com/mikadosushibarasianrestaurant/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-instagram"></use></svg>Instagram</a></span></li>
           <li><b>Öffnungszeiten</b><span>Mo., Mi., Do., Fr. 11:00–15:00 &amp; 17:00–22:00<br>Sa. &amp; So. 12:00–22:00<br>Dienstag Ruhetag (an Feiertagen geöffnet)</span></li>
           <li><b>Buffet + Sushi</b><span>Fr. &amp; Sa. 17:30–21:00 · So. 12:00–14:00 &amp; 17:30–21:00</span></li>
         </ul>
 
         <div class="contact__actions">
           <a class="btn btn--gold" href="tel:+4949419901764">Jetzt anrufen</a>
-          <a class="btn btn--ghost" href="https://share.google/xjBxgUn1EsnJE5B0c" target="_blank" rel="noopener">Route öffnen</a>
+          <a class="btn btn--ghost" href="https://share.google/xjBxgUn1EsnJE5B0c" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-location"></use></svg>Route öffnen</a>
         </div>
       </div>
 
@@ -440,7 +446,7 @@
           <li><a href="https://share.google/xjBxgUn1EsnJE5B0c" target="_blank" rel="noopener">26603 Aurich</a></li>
           <li><a href="tel:+4949419901764">04941 990 1764</a></li>
           <li>www.mikado-aurich.de</li>
-          <li><a href="https://www.facebook.com/profile.php?id=61594717379834" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/mikadosushibarasianrestaurant/" target="_blank" rel="noopener">Instagram</a></li>
+          <li class="social-links"><a class="social-link" href="https://www.facebook.com/profile.php?id=61594717379834" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-facebook"></use></svg>Facebook</a><a class="social-link" href="https://www.instagram.com/mikadosushibarasianrestaurant/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-instagram"></use></svg>Instagram</a></li>
         </ul>
       </div>
 
