@@ -57,7 +57,6 @@
       if (state.filter === 'veg' && !t.veg) return false;
       if (state.filter === 'spicy' && !t.spicy) return false;
       if (state.filter === 'sushi' && group.kind !== 'sushi') return false;
-      if (state.filter === 'drink' && group.kind !== 'drink') return false;
     }
     if (state.query && haystack(item, group).indexOf(state.query) === -1) return false;
     return true;

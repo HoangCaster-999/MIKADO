@@ -1,5 +1,5 @@
 /* MIKADO – Speisekarte
-   Quelle: MIKADO_Menu.pdf (28 Seiten). Preise als String "11,90"; der Renderer haengt " €" an.
+   Quelle: MIKADO_Menu.pdf (28 Seiten), Speisen aktualisiert nach MIKADO_Flyer.pdf (09/2026). Preise als String "11,90"; der Renderer haengt " €" an.
    allerg: Buchstaben-/Zahlencodes laut Legende auf Seite 27 der Karte.
    tags:  veg = vegetarisch (oder vegetarische Variante), spicy = scharf, raw = roher Fisch.
    opts:  [Bezeichnung DE, Bezeichnung EN, Preis, tag?] */
@@ -16,7 +16,7 @@
     ['F. Gegrillter Thunfisch', 'Grilled tuna', '18,90'],
     ['G. Barbarie-Ente', 'Barbary duck', '17,90'],
     ['H. Knusprige Ente', 'Crispy duck', '14,50'],
-    ['I. Hühn kross gebacken', 'Crispy fried chicken', '13,90'],
+    ['I. Huhn kross gebacken', 'Crispy fried chicken', '13,90'],
     ['K. Rindfleisch', 'Beef', '14,90']
   ];
 
@@ -70,12 +70,12 @@
                    ['C. Garnelen', 'Shrimp', '5,50']]
           },
           {
-            n: '4', name: 'Gemischte Vorspeisenplatte', allerg: 'A1,E,F,O', price: '14,90',
+            n: '4', name: 'Gemischte Vorspeisenplatte', allerg: 'D,E,F,B', price: '14,90',
             de: '4 Frühlingsrollen, 2 gebackene Garnelen, 2 gebackene Chicken-Wantan, 2 Sommerrollen, 2 gegrillte Chicken-Sticks, gemischter Salat, Unagi-Soße und Süß-Sauer-Soße.',
             en: '4 spring rolls, 2 fried prawns, 2 fried chicken wontons, 2 summer rolls, 2 grilled chicken skewers, mixed salad with unagi sauce and sweet & sour sauce.'
           },
           {
-            n: '5', name: 'Frühlingsrollen', allerg: 'A1,5 / A,C,1',
+            n: '5', name: 'Frühlingsrollen', allerg: 'D,14 / A,C,1',
             de: 'Knusprig gebratene Rollen, serviert mit süß-saurer Sauce.',
             en: 'Crispy fried rolls, served with a sweet and sour sauce.',
             img: IMG + 'd05b-fruehlingsrollen.png',
@@ -83,24 +83,24 @@
                    ['B. Hausgemachte Frühlingsrolle (2 Stk.) – Hühnerfleisch, Shiitake, Gemüse, Glasnudeln', 'Chicken, shiitake, vegetables, glass noodles', '5,50']]
           },
           {
-            n: '6', name: 'Gebackene Chicken Wantan (5 Stk.)', allerg: 'A,1', price: '4,70',
+            n: '6', name: 'Gebackene Chicken Wantan (5 Stk.)', allerg: 'D', price: '4,70',
             de: 'Hausgemachte gebackene Teigtaschen, gefüllt mit Hühnerfleisch.',
             en: 'Homemade fried dumplings filled with chicken.'
           },
           {
-            n: '7', name: 'Mikado Ebi Tempura (2 Stk.)', allerg: 'A1,F,L,O', price: '4,90',
+            n: '7', name: 'Mikado Ebi Tempura (2 Stk.)', allerg: 'D,F,11,B', price: '4,90',
             de: 'Gebackene Garnelen mit Unagi-Soße.', en: 'Fried prawns with unagi sauce.'
           },
           {
-            n: '8', name: 'Mikado Tofu Tempura (2 Stk.)', allerg: 'A1,F', price: '4,50', tags: 'veg',
+            n: '8', name: 'Mikado Tofu Tempura (2 Stk.)', allerg: 'D,F', price: '4,50', tags: 'veg',
             de: 'Gebackener Tofu mit Salat.', en: 'Fried tofu with salad.'
           },
           {
-            n: '9', name: 'Mikado Crispy Chicken (4 Stk.)', allerg: 'A1,F,L', price: '5,50',
+            n: '9', name: 'Mikado Crispy Chicken (4 Stk.)', allerg: 'D,F,11', price: '5,50',
             de: 'Gebackenes Hühnerfleisch mit Unagi-Soße.', en: 'Fried chicken with unagi sauce.'
           },
           {
-            n: '10', name: 'Yakitori – Chicken Sticks (2 Stk.)', allerg: 'A1,F,K,L', price: '4,50',
+            n: '10', name: 'Yakitori – Chicken Sticks (2 Stk.)', allerg: 'A,F', price: '4,50',
             de: 'Würzig marinierte Hähnchenspieße mit Salat und Unagi-Soße.',
             en: 'Spicy marinated chicken skewers with salad and unagi sauce.',
             img: IMG + 'd10-yakitori.png'
@@ -195,7 +195,7 @@
                    ['B. Knusprig gebratene Ente', 'Crispy fried duck', '14,50']]
           },
           {
-            n: '24', name: 'Hühn kross gebacken', allerg: 'L,F,D,1,B', price: '13,90',
+            n: '24', name: 'Huhn kross gebacken', allerg: 'L,F,D,1,B', price: '13,90',
             de: 'Serviert mit BBQ-Sauce, frischem Gemüse und Reis mit Sesam.',
             en: 'Served with BBQ sauce, fresh vegetables and sesame rice.',
             img: IMG + 'd24-huhn-kross.png'
@@ -264,6 +264,15 @@
             img: IMG + 'd33-skyline.png', opts: WOK
           },
           {
+            n: '41', name: 'Bun Tron – vietnamesische Spezialität', allerg: 'E,F',
+            de: 'Reisnudeln mit frischen Kräutern, gemischtem Salat, Koriander, Erdnüssen und Röstzwiebeln – mit einer Zutat Ihrer Wahl.',
+            en: 'Rice noodles with fresh herbs, mixed salad, coriander, peanuts and crispy fried onions – with a topping of your choice.',
+            opts: [['A. Tofu', 'Tofu', '11,90', 'veg'], ['B. Hühnerfleisch', 'Chicken', '13,90'],
+                   ['C. Rindfleisch', 'Beef', '14,90'],
+                   ['D. Vietnamesische Frühlingsrollen', 'Vietnamese spring rolls', '13,90'],
+                   ['E. Hackfleischröllchen in Lolot-Blättern (Rind und Hähnchen)', 'Minced beef & chicken rolls in lolot leaves', '15,90']]
+          },
+          {
             n: '42', name: 'Bratnudeln oder Bratreis mit Ei', allerg: 'D,A,E,F,1,8,14',
             de: 'Gebratene Nudeln oder Reis mit Ei und verschiedenem gebratenem Gemüse in Sweet-Chili-Soße.',
             en: 'Fried noodles or rice with egg and mixed stir-fried vegetables in sweet chili sauce.',
@@ -271,7 +280,7 @@
             opts: [['A. Tofu', 'Tofu', '11,50', 'veg'], ['B. Hühnerfleisch', 'Chicken breast', '12,50'],
                    ['C. Gebackenes Hühnerfleisch', 'Baked chicken', '12,90'],
                    ['D. Knusprige Ente', 'Crispy duck', '13,00'],
-                   ['E. Hühn kross gebacken', 'Crispy fried chicken', '12,50'],
+                   ['E. Huhn kross gebacken', 'Crispy fried chicken', '12,50'],
                    ['F. Garnelen', 'Shrimp', '13,90'], ['G. Rindfleisch', 'Beef', '13,50']]
           }
         ]
@@ -332,7 +341,7 @@
             n: '39', name: 'Süß-Sauer-Soße', allerg: 'D',
             de: 'Süß-Sauer-Soße, serviert auf frischem Gemüse mit Reis und Sesam.',
             en: 'Sweet and sour sauce, served on fresh vegetables with sesame rice.',
-            opts: WOK
+            opts: [['A. Vegetarisch (Tofu)', 'Tofu', '11,50', 'veg']].concat(WOK.slice(1))
           }
         ]
       },
@@ -447,11 +456,11 @@
         note: 'Mit schwarzem Reis oder weißem Sushi-Reis. Serviert mit Unagi-Soße, Aioli und Seetangsalat.',
         items: [
           { n: '100', name: 'Summer Love', allerg: 'F,A,G', price: '14,90', tags: 'veg', de: 'Tofutasche, Paprika, Aioli-Soße, Frischkäse und Sesam, umwickelt mit Avocado.', en: 'Tofu pocket, bell peppers, aioli sauce, cream cheese and sesame, wrapped with avocado.', img: IMG + 'special-rolls.png' },
-          { n: '101', name: 'Rainbow', allerg: 'B,D,G,L,C', price: '14,90', tags: 'raw', de: 'Surimi, Gurke, Frischkäse, Avocado und Sesam, umwickelt mit einem Regenbogen aus Lachs, Thunfisch und Avocado.', en: 'Surimi, cucumber, cream cheese, avocado and sesame, wrapped with a rainbow of salmon, tuna and avocado.' },
+          { n: '101', name: 'Rainbow', allerg: 'B,D,G,L,C', price: '16,50', tags: 'raw', de: 'Surimi, Gurke, Frischkäse, Avocado und Sesam, umwickelt mit einem Regenbogen aus Lachs, Thunfisch und Avocado.', en: 'Surimi, cucumber, cream cheese, avocado and sesame, wrapped with a rainbow of salmon, tuna and avocado.' },
           { n: '102', name: 'Hawai', allerg: 'B,D,G,C,A,L', price: '16,50', de: 'Surimi, Garnelen, Mango, Gurke, Frischkäse und Sesam, umhüllt mit flambiertem Lachs und Aioli-Soße.', en: 'Surimi, shrimp, mango, cucumber, cream cheese and sesame, wrapped with flambéed salmon and aioli sauce.' },
           { n: '103', name: 'Salmon on Fire', allerg: 'B,D,G,A,L', price: '15,90', de: 'Tempura-Garnele, Mango, Gurke, Frischkäse und Sesam, umhüllt mit flambiertem Lachs und Aioli-Soße.', en: 'Ebi tempura shrimp, mango, cucumber, cream cheese and sesame, wrapped in flamed salmon and aioli sauce.' },
           { n: '104', name: 'Dragon', allerg: 'B,D,G,N,F,L', price: '16,50', tags: 'spicy', de: 'Tempura-Garnele, Avocado, Frischkäse, Chili-Paste und Sesam, umhüllt mit gegrilltem Unagi-Filet und Unagi-Soße.', en: 'Tempura shrimp, avocado, chili paste, cream cheese and sesame, wrapped in grilled unagi fillet with unagi sauce.' },
-          { n: '105', name: 'Surf und Turf', allerg: 'B,G,N,F,L', price: '16,50', de: 'Tempura-Garnele und Sesam, ummantelt mit Roastbeef, Trüffelcreme und Unagi-Soße.', en: 'Tempura shrimp, coated with roast beef, truffle cream and unagi sauce.' },
+          { n: '105', name: 'Surf und Turf', allerg: 'B,G,N,F,L', price: '16,50', de: 'Tempura-Garnele, Avocado oder Gurke und Sesam, ummantelt mit Roastbeef, Trüffelcreme und Unagi-Soße.', en: 'Tempura shrimp, avocado or cucumber and sesame, coated with roast beef, truffle cream and unagi sauce.' },
           { n: '106', name: 'Special Mikado', allerg: 'C,G,N,A,1,L', price: '16,50', tags: 'spicy', de: 'Gegrillter Lachsbauch, Rucola, Gurke, Mango, Frischkäse und Sesam, umhüllt mit flambierten Jakobsmuscheln, Mayonnaise und Chili-Paste.', en: 'Grilled salmon belly with cream cheese, arugula, cucumber, sesame and mango, wrapped with flambéed scallops, mayonnaise and chili paste.' },
           { n: '107', name: 'Thunamon', allerg: 'C,G,L', price: '16,90', de: 'Thunfisch, Gurke, Avocado, Sesam und Kaviarcreme, umhüllt mit flambiertem Thunfisch.', en: 'Tuna, cucumber, avocado, sesame and caviar cream, wrapped with flambéed tuna.' },
           { n: '108', name: 'Salmon Belly', allerg: 'C,G,L', price: '15,90', de: 'Gegrillter Lachsbauch, Rucola, gelber Rettich, Sesam und Frischkäse, umhüllt mit flambiertem Lachs.', en: 'Grilled salmon belly, arugula, yellow radish, sesame and cream cheese, wrapped in flambéed salmon.' },
@@ -463,13 +472,13 @@
       /* ------------------------------------------------------------- CRUNCHY ROLLS */
       {
         id: 'crunchy', kind: 'sushi', name: 'Mikado Crunchy Rolls', en: 'Crunchy rolls', unit: '6 Stk.',
-        note: 'Knusprige und warme Sushi-Rollen. Serviert mit Unagi- bzw. Teriyaki-Soße und Cocktailsauce. Allergen der Gruppe: D.',
+        note: 'Knusprige und warme Sushi-Rollen. Serviert mit Unagi-Soße (vegan) bzw. Teriyaki-Soße und Cocktailsauce. Allergen der Gruppe: D.',
         items: [
           { n: '200', name: 'Buddha Roll', allerg: 'F,G,L', price: '7,00', tags: 'veg', de: 'Tofu, Gurke, Avocado, Paprika, Frischkäse und Sesam.', en: 'Tofu, cucumber, avocado, peppers, cream cheese and sesame.', img: IMG + 'crunchy-rolls.png' },
           { n: '201', name: 'Veggie Roll', allerg: 'G,L', price: '7,00', tags: 'veg', de: 'Avocado, Gurke, Frischkäse und Sesam.', en: 'Avocado, cucumber, cream cheese and sesame.' },
           { n: '202', name: 'Hokkaido Roll', allerg: 'G,L', price: '7,50', tags: 'veg', de: 'Avocado, Rucola, Rettich, Gurke, Frischkäse und Sesam.', en: 'Avocado, arugula, radish, cucumber, cream cheese and sesame.' },
           { n: '203', name: 'Toronto Roll', allerg: 'C,G,L', price: '8,00', de: 'Lachs, Avocado, Gurke, Frischkäse und Sesam.', en: 'Salmon, avocado, cucumber, cream cheese and sesame.' },
-          { n: '204', name: 'Fuji Roll', allerg: 'B,D,L', price: '8,00', tags: 'spicy', de: 'Ebi-Tempura, Avocado, Mango, Lauch, Sesam und Chili.', en: 'Ebi tempura, avocado, mango, leek, sesame and chili.' },
+          { n: '204', name: 'Fuji Roll', allerg: 'B,D,L', price: '8,00', tags: 'spicy', de: 'Ebi-Tempura, Avocado, Mango, Sesam und Chili.', en: 'Ebi tempura, avocado, mango, sesame and chili.' },
           { n: '205', name: 'Chicago Roll', allerg: 'B,D,N,G,L', price: '9,00', de: 'Surimi, Lachs, Gurke, Unagi-Filet, Frischkäse und Sesam.', en: 'Surimi, salmon, cucumber, unagi fillet, cream cheese and sesame.' },
           { n: '206', name: 'Nina Roll', allerg: 'C,G,L', price: '8,50', tags: 'spicy', de: 'Thunfisch, Gurke, Frischkäse, Sesam und Chili.', en: 'Tuna, cucumber, cream cheese, sesame and chili.' },
           { n: '207', name: 'Tori Roll', allerg: 'G,L', price: '8,50', de: 'Hühnerfleisch, Gurke, Avocado, Frischkäse und Sesam.', en: 'Chicken, cucumber, avocado, cream cheese and sesame.' }
@@ -482,7 +491,7 @@
         note: 'Fertig zusammengestellte Platten – von der Einzelportion bis zum Party-Menü für vier.',
         items: [
           { n: 'M1', name: 'Vegetarisch', allerg: 'L,G,F', price: '16,90', tags: 'veg', de: '6× Maki Gurke, 6× Maki Avocado, 2× Nigiri Avocado, 8× I.O. Pagoda.', en: '6× cucumber maki, 6× avocado maki, 2× avocado nigiri, 8× I.O. Pagoda.' },
-          { n: 'M2', name: 'Sake', allerg: 'L,G,F,C', price: '21,90', tags: 'raw', de: 'Miso-Suppe, 2× Lachs-Nigiri, 6× Lachs-Maki, 8× I.O. Alaska, 3× Lachs-Sashimi.', en: 'Miso soup starter, 2× salmon nigiri, 6× salmon maki, 8× I.O. Alaska, 3× salmon sashimi.', img: IMG + 'm2-sake.png' },
+          { n: 'M2', name: 'Sake', allerg: 'L,G,F,C', price: '21,90', tags: 'raw', de: '2× Lachs-Nigiri, 6× Lachs-Maki, 8× I.O. Alaska, 3× Lachs-Sashimi.', en: '2× salmon nigiri, 6× salmon maki, 8× I.O. Alaska, 3× salmon sashimi.', img: IMG + 'm2-sake.png' },
           { n: 'M3', name: 'Maguro', allerg: 'L,G,F,C', price: '22,90', tags: 'raw', de: '2× Nigiri Thunfisch, 6× Maguro Maki, 8× I.O. Maguro, 3× Sashimi Maguro.', en: '2× tuna nigiri, 6× maguro maki, 8× I.O. Maguro, 3× maguro sashimi.', img: IMG + 'm3-maguro.png' },
           { n: 'M4', name: 'Sumo', allerg: 'L,G,F,C', price: '22,90', tags: 'raw', de: '2× Nigiri Lachs, 2× Nigiri Maguro, 6× Maki Thunfisch, 8× I.O. Alaska.', en: '2× salmon nigiri, 2× maguro nigiri, 6× tuna maki, 8× I.O. Alaska.' },
           { n: 'M5', name: 'Lachs Vegas', allerg: 'L,G,F,C,D', price: '28,90', tags: 'raw', de: '6× Crunchy Toronto, 6× Maki Lachs, 2× Nigiri Lachs, 4× Special Roll „Salmon on Fire“.', en: '6× crunchy Toronto, 6× salmon maki, 2× salmon nigiri, 4× special roll “Salmon on Fire”.' },
@@ -498,144 +507,6 @@
         items: [
           { n: 'K1', name: 'Kids Menü 1', allerg: 'D,F,1', price: '8,50', de: '6 japanische Chicken Nuggets mit Teriyaki-Soße, serviert mit Pommes frites oder Jasminreis.', en: '6 Japanese chicken nuggets with teriyaki sauce, served with French fries or jasmine rice.' },
           { n: 'K2', name: 'Kids Menü 2', allerg: 'B,D,F,1,L', price: '9,50', de: '3 Tempura-Garnelen mit Teriyaki-Soße, serviert mit Pommes frites oder Jasminreis.', en: '3 tempura prawns with teriyaki sauce, served with French fries or jasmine rice.' }
-        ]
-      },
-
-      /* ---------------------------------------------------------------- DESSERTS */
-      {
-        id: 'desserts', kind: 'food', name: 'Desserts', en: 'Desserts',
-        items: [
-          { n: 'D1', name: 'Mochi Eiscreme (4 Stk.)', allerg: 'G', price: '7,50', tags: 'veg', de: 'Reiskuchen, gefüllt mit verschiedenen Eissorten.', en: 'Rice cakes filled with various types of ice cream.' },
-          { n: 'D2', name: 'Moelleux Chocolat', allerg: '8', price: '7,50', tags: 'veg', de: 'Lauwarmer Schokoladenkuchen mit Mangopüree und frischen Früchten.', en: 'Warm chocolate cake with mango puree and fresh fruit.' },
-          { n: 'D3', name: 'Sesambällchen (4 Stk.)', allerg: 'L,D', price: '7,50', tags: 'veg', de: 'Knusprige Sesambällchen mit Vanillefüllung.', en: 'Crispy sesame balls with vanilla filling.' },
-          { n: 'D4', name: 'Banana Split (nur im Haus)', allerg: 'E,G', price: '6,00', tags: 'veg', de: 'Banane mit einer Kugel Vanille und Schokolade, Sahne, Erdnüssen und Schoko-Sauce.', en: 'Banana with a scoop of vanilla and chocolate, whipped cream, peanuts and chocolate sauce.' }
-        ]
-      },
-
-      /* ---------------------------------------------------------------- GETRÄNKE */
-      {
-        id: 'warme-getraenke', kind: 'drink', name: 'Warme Getränke', en: 'Hot drinks',
-        items: [
-          { name: 'Vietnamesischer Kaffee (warm)', allerg: '2', price: '4,00' },
-          { name: 'Vietnamesischer Kaffee mit Kondensmilch', allerg: '8,13', price: '4,50' },
-          { name: 'Kaffee', allerg: '2', price: '2,80' },
-          { name: 'Espresso', allerg: '2', price: '2,80' },
-          { name: 'Cappuccino', allerg: 'G,2', price: '3,00' },
-          { name: 'Latte Macchiato', allerg: 'G', price: '3,80' },
-          { name: 'Mikado Tee (warm)', price: '3,80', de: 'Grüner Tee, Zitronengras, Ingwer, Minze, Limette und Honig.', en: 'Green tea, lemongrass, ginger, mint, lime and honey.' }
-        ]
-      },
-      {
-        id: 'kalte-getraenke', kind: 'drink', name: 'Kalte Getränke', en: 'Cold drinks',
-        items: [
-          { name: 'Wasser', opts: [['0,2 l', '', '2,20'], ['0,4 l', '', '3,50'], ['1,0 l', '', '5,50']] },
-          { name: 'Cola / Cola Zero / Cola Light', allerg: '1,2,3', opts: [['0,4 l', '', '3,00'], ['1,0 l', '', '4,50']] },
-          { name: 'Sprite', allerg: '1,3', opts: [['0,4 l', '', '3,00'], ['1,0 l', '', '4,50']] },
-          { name: 'Fanta', allerg: '1,3', opts: [['0,4 l', '', '3,00'], ['1,0 l', '', '4,50']] },
-          { name: 'Mezzo Mix', allerg: '1,2,3', opts: [['0,4 l', '', '3,00'], ['1,0 l', '', '4,50']] },
-          { name: 'Ginger Ale', allerg: '2,13', price: '3,20' },
-          { name: 'Bitter Lemon', allerg: '2,13', price: '3,20' }
-        ]
-      },
-      {
-        id: 'limonade', kind: 'drink', name: 'Mikado Limonade', en: 'Homemade lemonade',
-        note: 'Hausgemachte Limonade – 5,50 € je Sorte. Basis: frische Limette, Minze, Rohrzucker und Sodawasser.',
-        items: [
-          { name: 'Maracuja', allerg: '18', price: '5,50', de: 'Frische Limette, Soda, Sirup und Maracujasaft.', en: 'Fresh lime, soda, syrup, passion fruit juice.' },
-          { name: 'Erdbeere', allerg: '18', price: '5,50', de: 'Frische Limette, Soda, Sirup und Wild Berry.', en: 'Fresh lime, soda, syrup, wild berry.' },
-          { name: 'Ingwer', allerg: '8', price: '5,50', de: 'Frischer Ingwer, Soda, Ingwersirup und Ginger Ale.', en: 'Fresh ginger, soda, ginger syrup, ginger ale.' },
-          { name: 'Holunder', allerg: '18', price: '5,50', de: 'Frische Limette, Soda, Sirup und Ginger Ale.', en: 'Fresh lime, soda, syrup, ginger ale.' },
-          { name: 'Mango', allerg: '8', price: '5,50', de: 'Frische Limette, Soda, Sirup und Mangosaft.', en: 'Fresh lime, soda, syrup, mango juice.' },
-          { name: 'Pfirsich', allerg: '18', price: '5,50', de: 'Frische Limette, Soda, Sirup und White Peach.', en: 'Fresh lime, soda, syrup, white peach.' },
-          { name: 'Lychee', allerg: '8', price: '5,50', de: 'Frische Limette, Soda und Litschisaft.', en: 'Fresh lime, soda, lychee juice.' }
-        ]
-      },
-      {
-        id: 'hausgemacht', kind: 'drink', name: 'Hausgemachte Getränke', en: 'Homemade drinks',
-        items: [
-          { name: 'Mango Lassi (0,4 l)', allerg: 'G', price: '5,50', de: 'Mangopüree, Naturjoghurt und eine Prise Zucker.', en: 'Mango puree, natural yogurt, a pinch of sugar.' },
-          { name: 'Avocado Lassi (0,4 l)', allerg: 'G', price: '5,50', de: 'Avocado, Milch und eine Prise Zucker.', en: 'Avocado, milk, a pinch of sugar.' },
-          { name: 'Nuoc Chanh Da (0,4 l)', allerg: '1,8', price: '5,00', de: 'Frische Limette, brauner Zucker und Still- oder Sprudelwasser.', en: 'Fresh lime, brown sugar and still or sparkling water.' },
-          { name: 'Vietnamesischer Eiskaffee (0,4 l)', allerg: '2', price: '4,50' },
-          { name: 'Vietnamesischer Eiskaffee mit Kondensmilch (0,4 l)', allerg: '2,G', price: '5,00' }
-        ]
-      },
-      {
-        id: 'saefte', kind: 'drink', name: 'Säfte', en: 'Juices',
-        items: [
-          { name: 'Lychee-Nektar', opts: [['0,2 l', '', '3,50'], ['0,4 l', '', '6,50']] },
-          { name: 'Lychee-Schorle', opts: [['0,2 l', '', '3,00'], ['0,4 l', '', '5,50']] },
-          { name: 'Mango-Nektar', opts: [['0,2 l', '', '3,50'], ['0,4 l', '', '6,50']] },
-          { name: 'Mango-Schorle', opts: [['0,2 l', '', '3,00'], ['0,4 l', '', '5,50']] },
-          { name: 'Guaven-Nektar', opts: [['0,2 l', '', '3,50'], ['0,4 l', '', '6,50']] },
-          { name: 'Guaven-Schorle', opts: [['0,2 l', '', '3,00'], ['0,4 l', '', '5,50']] },
-          { name: 'Orangensaft', price: '3,50' },
-          { name: 'Apfelsaft', opts: [['0,2 l', '', '3,00'], ['0,4 l', '', '5,50']] },
-          { name: 'Apfelsaftschorle', opts: [['0,2 l', '', '2,80'], ['0,4 l', '', '4,50']] },
-          { name: 'Kokosnusswasser', price: '4,00' }
-        ]
-      },
-      {
-        id: 'wein', kind: 'drink', name: 'Wein', en: 'Wine',
-        note: 'Alle Weine mit Zusatzstoff 4 (mit Süßungsmittel).',
-        items: [
-          { name: 'Pinot Grigio – weiß trocken', allerg: '4', meta: '12 % vol.', opts: [['0,2 l', '', '5,50'], ['0,75 l', '', '21,00']] },
-          { name: 'Chardonnay – weiß halbtrocken', allerg: '4', meta: '12 % vol.', opts: [['0,2 l', '', '5,00'], ['0,75 l', '', '20,00']] },
-          { name: 'Moscato – weiß süß', allerg: '4', meta: '8,5 % vol.', opts: [['0,2 l', '', '5,00'], ['0,75 l', '', '20,00']] },
-          { name: 'Merlot – rot trocken', allerg: '4', meta: '13,5 % vol.', opts: [['0,2 l', '', '5,50'], ['0,75 l', '', '21,00']] },
-          { name: 'Dornfelder – rot halbtrocken', allerg: '4', meta: '12 % vol.', opts: [['0,2 l', '', '5,00'], ['0,75 l', '', '20,00']] },
-          { name: 'Rosé – halbtrocken', allerg: '4', meta: '11 % vol.', opts: [['0,2 l', '', '5,00'], ['0,75 l', '', '20,00']] },
-          { name: 'Weinschorle', price: '4,50' },
-          { name: 'Sekt', meta: '10,5 % vol.', price: '2,00' }
-        ]
-      },
-      {
-        id: 'cocktails', kind: 'drink', name: 'Cocktails & Longdrinks', en: 'Cocktails & longdrinks',
-        note: 'Alle 0,4 l.',
-        items: [
-          { name: 'Maiijito', allerg: '1,2', price: '8,00', de: 'Havana 7 Jahre, Limette, Minze, Rohrzucker und Ginger Ale.', en: 'Havana 7 years, lime, mint, cane sugar, ginger ale.' },
-          { name: 'Da Nang Sunset', allerg: '1,2', price: '7,50', de: 'Malibu, Ananassaft und Grenadinesirup.', en: 'Malibu, pineapple juice, grenadine syrup.' },
-          { name: 'Ha Long Bay', allerg: '4,1,2', price: '8,50', de: 'Vodka, Curaçao, Orange, Maracuja-Sirup, Minze und Soda.', en: 'Vodka, curaçao, orange and passion fruit syrup, mint, soda.' },
-          { name: 'Hugo', allerg: '4,1,2', price: '7,00', de: 'Prosecco, Limette, Minze, Holundersirup und Soda.', en: 'Prosecco, lime, mint, elderflower syrup, soda.' },
-          { name: 'Aperol Spritz', allerg: '4,1,2', price: '7,50', de: 'Aperol, Prosecco, Orange und Soda.', en: 'Aperol, prosecco, orange, soda.' },
-          { name: 'Mikado Spritz', allerg: '3,8,1', price: '7,50', de: 'Holunderblüte, Prosecco, Lycheesaft und Grenadine.', en: 'Elderflower, prosecco, lychee juice, grenadine.' }
-        ]
-      },
-      {
-        id: 'mocktails', kind: 'drink', name: 'Mocktails', en: 'Mocktails',
-        note: 'Alkoholfrei, alle 0,4 l.',
-        items: [
-          { name: "Mai's Rainbow", allerg: '4,1,8', price: '6,00', de: 'Grenadinesirup, Mangosaft, Soda, Blue Curaçao und Minze.', en: 'Grenadine syrup, mango juice, soda, blue curaçao, mint.' },
-          { name: 'Summer Mocktail', allerg: '4,1,8,3', price: '5,50', de: 'Ananassaft, Grenadinesirup, Sprite und Minze.', en: 'Pineapple juice, grenadine syrup, Sprite, mint.' },
-          { name: 'Da Nang Sunset', allerg: '4,1,8', price: '5,00', de: 'Lycheesaft, Grenadinesirup, Limette, Minze und Soda.', en: 'Lychee juice, grenadine syrup, lime, mint, soda.' },
-          { name: 'Ha Long Bay', allerg: '4,1,8', price: '6,00', de: 'Blue Curaçao, Guavensaft, Minze, Soda und Orange.', en: 'Blue curaçao, guava juice, mint, soda, orange.' },
-          { name: 'Moskito', allerg: '4,1,8', price: '6,00', de: 'Limette, Minze, Rohrzucker und Ginger Ale.', en: 'Lime, mint, cane sugar, ginger ale.' }
-        ]
-      },
-      {
-        id: 'bier', kind: 'drink', name: 'Bier', en: 'Beer',
-        items: [
-          { name: 'Saigon Bier (aus Vietnam)', price: '3,70' },
-          { name: 'Krombacher vom Fass', opts: [['0,33 l', '', '3,50'], ['0,5 l', '', '5,50']] },
-          { name: 'Veltins Pils vom Fass', opts: [['0,33 l', '', '3,50'], ['0,5 l', '', '5,50']] },
-          { name: 'Weizenbier', price: '4,50' },
-          { name: 'Weizenbier alkoholfrei', price: '4,50' },
-          { name: 'Krombacher alkoholfrei', price: '3,20' },
-          { name: 'Krombacher Radler alkoholfrei (Flasche)', price: '3,20' },
-          { name: 'Alster', opts: [['0,33 l', '', '3,00'], ['0,5 l', '', '5,00']] },
-          { name: 'Vitamalz', price: '3,20' }
-        ]
-      },
-      {
-        id: 'spirituosen', kind: 'drink', name: 'Spirituosen & Sake', en: 'Spirits & sake',
-        items: [
-          { name: 'Rémy Martin Cognac', meta: '40 % vol.', opts: [['0,04 l', '', '5,50']] },
-          { name: "Jack Daniel's Whiskey", meta: '40 % vol.', opts: [['0,04 l', '', '4,50']] },
-          { name: 'Absolut Vodka', meta: '40 % vol.', opts: [['0,02 l', '', '3,00'], ['Flasche 0,7 l', '', '40,00']] },
-          { name: 'Jägermeister', meta: '35 % vol.', opts: [['0,02 l', '', '2,50'], ['Flasche 0,7 l', '', '25,00']] },
-          { name: 'Pflaumenwein', meta: '10 % vol.', opts: [['0,04 l', '', '3,00'], ['Flasche 0,5 l', '', '20,00']] },
-          { name: 'Lycheewein', meta: '14 % vol.', opts: [['0,04 l', '', '3,50'], ['Flasche 0,6 l', '', '25,00']] },
-          { name: 'Sake (warm)', meta: '14,5 % vol.', opts: [['0,15 l', '', '5,50']] }
         ]
       }
     ]
