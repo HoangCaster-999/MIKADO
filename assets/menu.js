@@ -88,6 +88,7 @@
     return '<ul class="opts">' + item.opts.map(function (o) {
       return '<li><i>' + esc(o[0]) +
         (o[1] ? ' <em>' + esc(o[1]) + '</em>' : '') +
+        (o[4] ? ' ' + allergBadge(o[4]) : '') +
         '</i><b>' + esc(o[2]) + ' €</b></li>';
     }).join('') + '</ul>';
   }

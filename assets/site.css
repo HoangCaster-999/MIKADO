@@ -5,11 +5,11 @@
 :root {
   /* Dunkelstufen mit spuerbarem Abstand, damit Karten vor dem Seitengrund
      stehen statt darin zu verschwinden. */
-  --ink:        #070b12;
-  --ink-2:      #0d1522;
-  --ink-3:      #15202f;
-  --ink-4:      #1c2b3e;
-  --sea:        #0d2840;
+  --ink:        #0a0a0a;
+  --ink-2:      #131313;
+  --ink-3:      #1b1b1b;
+  --ink-4:      #252525;
+  --sea:        #151208;
   --line:       rgba(241, 180, 14, .42);
   --line-soft:  rgba(255, 255, 255, .2);
   /* Glasiger Kartenverlauf – ersetzt flache Flaechen. */
@@ -28,8 +28,8 @@
   --paper-ink:  #21160e;
 
   --text:       #f5f7fa;
-  --muted:      #dce3ed;
-  --muted-2:    #c0cad8;
+  --muted:      #e4dfd6;
+  --muted-2:    #c8c1b5;
   --muted-dark: #5a4632;
 
   --nav-h:      80px;
@@ -38,6 +38,9 @@
   --r-lg:       22px;
 
   --shadow:     0 24px 60px -28px rgba(0, 0, 0, .85);
+  /* Goldenes Blatt-Ornament aus dem Rahmen der Speisekarte. */
+  --leaf:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23c9a227' stroke-width='1.3' stroke-linejoin='round'%3E%3Cpath d='M32 0v64'/%3E%3Cpath d='M32 58C18 54 7 42 5 22c14 5 24 18 27 36zM32 58c14-4 25-16 27-36-14 5-24 18-27 36z'/%3E%3C/g%3E%3C/svg%3E");
+
   --ease:       cubic-bezier(.22, .61, .36, 1);
 
   --f-display:  'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
@@ -86,11 +89,24 @@ a { color: inherit; }
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
 }
 
-/* ---------------------------------------------------------- Seigaiha pattern */
+/* ---------------------------------------------------------- Blatt-Ornament */
+/* Dasselbe goldene Blattmuster wie auf dem Rahmen der gedruckten Karte. */
 .waves {
-  position: absolute; inset: 0; pointer-events: none; opacity: .5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'%3E%3Cg fill='none' stroke='%231d3f5e' stroke-width='1.1'%3E%3Cpath d='M0 48a24 24 0 0 1 48 0 24 24 0 0 1 48 0'/%3E%3Cpath d='M0 48a18 18 0 0 1 36 0M48 48a18 18 0 0 1 36 0M-12 48a18 18 0 0 1 36 0M60 48a18 18 0 0 1 36 0'/%3E%3Cpath d='M0 48a12 12 0 0 1 24 0M48 48a12 12 0 0 1 24 0M24 48a12 12 0 0 1 24 0M72 48a12 12 0 0 1 24 0'/%3E%3Cpath d='M0 48a6 6 0 0 1 12 0M12 48a6 6 0 0 1 12 0M24 48a6 6 0 0 1 12 0M36 48a6 6 0 0 1 12 0M48 48a6 6 0 0 1 12 0M60 48a6 6 0 0 1 12 0M72 48a6 6 0 0 1 12 0M84 48a6 6 0 0 1 12 0'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 96px 48px;
+  position: absolute; inset: 0; pointer-events: none; opacity: .16;
+  background-image: var(--leaf);
+  background-size: 64px 64px;
+}
+
+/* Seitliche Ornamentbaender wie der Rand der Speisekarte – nur dort, wo
+   neben dem Inhalt genug Platz ist. */
+@media (min-width: 1380px) {
+  body::before, body::after {
+    content: ''; position: fixed; top: 0; bottom: 0; width: 64px; z-index: 59;
+    pointer-events: none; opacity: .55;
+    background-image: var(--leaf); background-size: 64px 64px; background-repeat: repeat-y;
+  }
+  body::before { left: 18px; }
+  body::after  { right: 18px; }
 }
 
 /* ---------------------------------------------------------- Typography bits */
@@ -140,12 +156,12 @@ a { color: inherit; }
 /* ---------------------------------------------------------- Navigation */
 .nav {
   position: sticky; top: 0; z-index: 60;
-  background: rgba(7, 11, 18, .9);
+  background: rgba(10, 10, 10, .9);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s, background-color .3s;
 }
-.nav.is-stuck { border-bottom-color: var(--line-soft); background: rgba(7, 11, 18, .97); }
+.nav.is-stuck { border-bottom-color: var(--line-soft); background: rgba(10, 10, 10, .97); }
 .nav__inner {
   width: min(100% - 40px, var(--shell)); margin-inline: auto;
   display: flex; align-items: center; gap: 22px; height: var(--nav-h);
@@ -209,7 +225,7 @@ a { color: inherit; }
 .burger[aria-expanded='true']::after { transform: translateY(-6px) rotate(-45deg); }
 
 /* ---------------------------------------------------------- Hero */
-.hero { position: relative; overflow: hidden; background: radial-gradient(120% 90% at 78% 0%, #143453 0%, #081422 42%, var(--ink) 100%); }
+.hero { position: relative; overflow: hidden; background: radial-gradient(120% 90% at 78% 0%, #241c09 0%, #0f0d09 42%, var(--ink) 100%); }
 /* Warmer Lichtkegel oben rechts – setzt die Bildgruppe in Szene. */
 .hero__glow {
   position: absolute; z-index: 1; pointer-events: none;
@@ -238,7 +254,7 @@ a { color: inherit; }
 .hero h1 .wordmark { --wm: clamp(56px, 10.6vw, 132px); }
 
 .hero__lead {
-  color: #e9eef5; font-size: clamp(16px, 1.45vw, 18.5px);
+  color: #efeae2; font-size: clamp(16px, 1.45vw, 18.5px);
   max-width: 44ch; margin: 0 0 30px;
 }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
@@ -254,7 +270,7 @@ a { color: inherit; }
   font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase;
   color: var(--gold); font-weight: 600;
 }
-.hero__facts span { font-size: 13.5px; font-weight: 500; color: #e9eef5; }
+.hero__facts span { font-size: 13.5px; font-weight: 500; color: #efeae2; }
 
 /* Bildgruppe: zwei versetzte Karten vor einem Ring. Beide Bilder laufen in
    ihrer echten Hoehe (height:auto), es wird also nichts beschnitten. */
@@ -325,16 +341,11 @@ a { color: inherit; }
 
 /* ---------------------------------------------------------- Sections */
 .section { padding: clamp(64px, 8vw, 106px) 0; position: relative; }
-.section--sea { background: linear-gradient(180deg, var(--ink) 0%, #0b1e31 50%, var(--ink) 100%); }
-/* Weicher Uebergang von der dunklen Seite ins helle Papier. */
+.section--sea { background: linear-gradient(180deg, var(--ink) 0%, #12100b 50%, var(--ink) 100%); }
 .section--paper {
-  background: linear-gradient(180deg, #e9ddc7 0%, var(--paper) 22%, var(--paper) 100%);
-  color: var(--paper-ink);
+  background: var(--ink-2);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
-.section--paper .eyebrow { color: #80591c; }
-.section--paper .lede { color: #33281d; }
-.section--paper .rule::before, .section--paper .rule::after { background: rgba(122, 90, 40, .55); }
-.section--paper .rule i { background: #80591c; }
 
 /* ---------------------------------------------------------- Signature dishes */
 .sig-head { display: grid; gap: 18px; margin-bottom: 44px; }
@@ -381,7 +392,7 @@ a { color: inherit; }
 .buffet {
   position: relative; overflow: hidden; border-radius: var(--r-lg);
   border: 1px solid var(--line);
-  background: linear-gradient(115deg, #10293f, #071320 62%);
+  background: linear-gradient(115deg, #221b0b, #0c0b09 62%);
   padding: clamp(28px, 4vw, 46px);
   display: grid; grid-template-columns: 1.3fr 1fr; gap: 34px; align-items: center;
 }
@@ -409,7 +420,7 @@ a { color: inherit; }
 
 .menu-tools {
   position: sticky; top: var(--nav-h); z-index: 40;
-  background: rgba(7, 11, 18, .93);
+  background: rgba(10, 10, 10, .93);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
   padding: 13px 0;
@@ -527,17 +538,18 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums; letter-spacing: .01em;
 }
 .dish__from { font-size: 11px; color: var(--muted-2); font-weight: 500; letter-spacing: .06em; }
-.dish__de { margin: 7px 0 0; font-size: 14px; font-weight: 500; color: #e9eef5; line-height: 1.55; }
+.dish__de { margin: 7px 0 0; font-size: 14px; font-weight: 500; color: #efeae2; line-height: 1.55; }
 .dish__en { margin: 4px 0 0; font-size: 12.5px; font-weight: 500; color: #bcc6d4; font-style: italic; line-height: 1.5; }
 .dish__meta { margin: 4px 0 0; font-size: 12px; font-weight: 500; color: var(--muted); }
 
 .opts { list-style: none; margin: 12px 0 0; padding: 11px 0 0; display: grid; gap: 6px; border-top: 1px dashed var(--line-soft); }
 .opts li {
   display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
-  font-size: 13.5px; font-weight: 500; color: #e9eef5;
+  font-size: 13.5px; font-weight: 500; color: #efeae2;
 }
 .opts li i { font-style: normal; }
-.opts li em { font-style: italic; color: #b6c1d0; font-size: 11.5px; }
+.opts li .badge--allerg { margin-left: 6px; padding: 1px 7px; font-size: 10px; vertical-align: 1px; }
+.opts li em { font-style: italic; color: #bfb8ab; font-size: 11.5px; }
 .opts li b { font-weight: 600; color: var(--gold-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
@@ -566,8 +578,8 @@ a { color: inherit; }
 .guide {
   display: grid; grid-template-columns: 116px 1fr; gap: 18px; align-items: start;
   padding: 18px; border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, .85); border: 1px solid rgba(122, 90, 40, .38);
-  box-shadow: 0 14px 30px -22px rgba(90, 65, 25, .55);
+  background: var(--card); background-color: var(--ink-3); border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow);
 }
 /* Feste Kachel, Bild per contain komplett darin – nichts wird beschnitten.
    height ist zwingend gesetzt, sonst gewinnt das height-Attribut des <img>. */
@@ -581,10 +593,10 @@ a { color: inherit; }
   line-height: 1.1;
 }
 .guide__body span {
-  font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: #80591c;
+  font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold);
   display: block; margin-bottom: 6px;
 }
-.guide__body p { margin: 0; font-size: 13.5px; font-weight: 500; color: #33281d; line-height: 1.55; }
+.guide__body p { margin: 0; font-size: 13.5px; font-weight: 500; color: var(--muted); line-height: 1.55; }
 
 /* ---------------------------------------------------------- Gallery */
 /* Mauerwerk-Spalten statt Raster: jedes Foto behaelt sein eigenes
@@ -607,7 +619,7 @@ a { color: inherit; }
 .facts b {
   font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600;
 }
-.facts span { color: #e9eef5; font-size: 15.5px; font-weight: 500; line-height: 1.6; }
+.facts span { color: #efeae2; font-size: 15.5px; font-weight: 500; line-height: 1.6; }
 .facts a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
 .facts a:hover { color: var(--gold-soft); }
 .contact__actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -707,7 +719,7 @@ a { color: inherit; }
 }
 
 /* ---------------------------------------------------------- Footer */
-.footer { background: #04080d; border-top: 1px solid var(--line-soft); padding: 54px 0 32px; }
+.footer { background: #050505; border-top: 1px solid var(--line-soft); padding: 54px 0 32px; }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
 .footer h4 {
   font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
@@ -743,7 +755,7 @@ a { color: inherit; }
   .nav__links.is-open {
     display: flex; flex-direction: column; gap: 0;
     position: absolute; top: var(--nav-h); left: 0; right: 0;
-    background: rgba(7, 11, 18, .98); border-bottom: 1px solid var(--line-soft);
+    background: rgba(10, 10, 10, .98); border-bottom: 1px solid var(--line-soft);
     padding: 10px 20px 18px;
   }
   .nav__links.is-open a { padding: 13px 0; border-bottom: 1px solid var(--line-soft); font-size: 15px; }

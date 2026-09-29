@@ -303,8 +303,9 @@
             n: '35', name: 'Pho Curry',
             de: 'Reisbandnudeln in Kokosmilch-Curry-Soße mit Gemüse, Koriander und Frühlingszwiebeln.',
             en: 'Flat rice noodles in coconut curry sauce with vegetables, cilantro and green onions.',
-            opts: [['A. Tofu', 'Tofu', '11,90', 'veg'], ['B. Hühnerfleisch', 'Chicken breast', '13,90'],
-                   ['C. Rindfleisch', 'Beef', '14,90'], ['D. Garnelen', 'Shrimp', '15,50']]
+            /* Allergene je Zutat laut gedruckter Karte (5. Feld). */
+            opts: [['A. Tofu', 'Tofu', '11,90', 'veg', 'F'], ['B. Hühnerfleisch', 'Chicken breast', '13,90', '', 'D'],
+                   ['C. Rindfleisch', 'Beef', '14,90'], ['D. Garnelen', 'Shrimp', '15,50', '', 'B']]
           },
           {
             n: '40', name: 'Bangkok Suppe – scharfer Chili', allerg: 'B,C,F,N,9', price: '16,90', tags: 'spicy',
