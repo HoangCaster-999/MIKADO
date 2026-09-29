@@ -531,13 +531,13 @@ a { color: inherit; }
 .dish__top { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
 .dish__name {
   font-family: var(--f-display); font-size: 21px; font-weight: 500; margin: 0;
-  line-height: 1.2;
+  line-height: 1.2; color: var(--gold); text-transform: uppercase;
 }
 .dish__price {
-  font-size: 15.5px; font-weight: 600; color: var(--gold-soft); white-space: nowrap;
+  font-size: 15.5px; font-weight: 600; color: #fff; white-space: nowrap;
   font-variant-numeric: tabular-nums; letter-spacing: .01em;
 }
-.dish__from { font-size: 11px; color: var(--muted-2); font-weight: 500; letter-spacing: .06em; }
+.dish__from { font-size: 11px; color: inherit; font-weight: 500; letter-spacing: .06em; }
 .dish__de { margin: 7px 0 0; font-size: 14px; font-weight: 500; color: #efeae2; line-height: 1.55; }
 .dish__en { margin: 4px 0 0; font-size: 12.5px; font-weight: 500; color: #bcc6d4; font-style: italic; line-height: 1.5; }
 .dish__meta { margin: 4px 0 0; font-size: 12px; font-weight: 500; color: var(--muted); }
@@ -550,7 +550,7 @@ a { color: inherit; }
 .opts li i { font-style: normal; }
 .opts li .badge--allerg { margin-left: 6px; padding: 1px 7px; font-size: 10px; vertical-align: 1px; }
 .opts li em { font-style: italic; color: #bfb8ab; font-size: 11.5px; }
-.opts li b { font-weight: 600; color: var(--gold-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.opts li b { font-weight: 600; color: #fff; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
 .badge {

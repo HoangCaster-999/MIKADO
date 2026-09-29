@@ -191,14 +191,14 @@
             n: '23', name: 'Smoky Duck', allerg: 'L,F,D,1',
             de: 'Serviert mit BBQ-Sauce, frischem Gemüse und Reis mit Sesam.',
             en: 'Served with BBQ sauce, fresh vegetables and sesame rice.',
+            img: IMG + 'd24-huhn-kross.png',
             opts: [['A. Zart geräucherte und gegrillte Barbarie-Entenbrust', 'Smoked and grilled Barbary duck breast', '17,90'],
                    ['B. Knusprig gebratene Ente', 'Crispy fried duck', '14,50']]
           },
           {
             n: '24', name: 'Huhn kross gebacken', allerg: 'L,F,D,1,B', price: '13,90',
             de: 'Serviert mit BBQ-Sauce, frischem Gemüse und Reis mit Sesam.',
-            en: 'Served with BBQ sauce, fresh vegetables and sesame rice.',
-            img: IMG + 'd24-huhn-kross.png'
+            en: 'Served with BBQ sauce, fresh vegetables and sesame rice.'
           },
           {
             n: '25', name: 'Vitamin Sea', allerg: 'B,C,N,A,L', price: '22,90',
