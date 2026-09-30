@@ -2,21 +2,21 @@
    Quelle: MIKADO_Menu.pdf (28 Seiten), Speisen aktualisiert nach MIKADO_Flyer.pdf (09/2026). Preise als String "11,90"; der Renderer haengt " €" an.
    allerg: Buchstaben-/Zahlencodes laut Legende auf Seite 27 der Karte.
    tags:  veg = vegetarisch (oder vegetarische Variante), spicy = scharf, raw = roher Fisch.
-   opts:  [Bezeichnung DE, Bezeichnung EN, Preis, tag?] */
+   opts:  [Bezeichnung DE, Bezeichnung EN, Preis, tag?, Allergene?] */
 (function () {
   'use strict';
 
   /* Der 10er-Auswahlsatz, der bei Wok-, Curry- und Nudelgerichten identisch wiederkehrt. */
   var WOK = [
-    ['A. Vegetarisch (Tofu)', 'Tofu', '11,90', 'veg'],
+    ['A. Vegetarisch (Tofu)', 'Tofu', '11,90', 'veg', 'F'],
     ['B. Gegrillte Hähnchenbrust', 'Grilled chicken', '13,90'],
-    ['C. Knusprige Hähnchenbrust', 'Crispy chicken', '13,90'],
-    ['D. Black Tiger Garnele', 'Black tiger shrimp', '15,50'],
-    ['E. Gegrillter Lachs', 'Grilled salmon', '17,90'],
-    ['F. Gegrillter Thunfisch', 'Grilled tuna', '18,90'],
+    ['C. Knusprige Hähnchenbrust', 'Crispy chicken', '13,90', '', 'D'],
+    ['D. Black Tiger Garnele', 'Black tiger shrimp', '15,50', '', 'B'],
+    ['E. Gegrillter Lachs', 'Grilled salmon', '17,90', '', 'C'],
+    ['F. Gegrillter Thunfisch', 'Grilled tuna', '18,90', '', 'C'],
     ['G. Barbarie-Ente', 'Barbary duck', '17,90'],
-    ['H. Knusprige Ente', 'Crispy duck', '14,50'],
-    ['I. Huhn kross gebacken', 'Crispy fried chicken', '13,90'],
+    ['H. Knusprige Ente', 'Crispy duck', '14,50', '', 'D'],
+    ['I. Huhn kross gebacken', 'Crispy fried chicken', '13,90', '', 'D'],
     ['K. Rindfleisch', 'Beef', '14,90']
   ];
 
@@ -54,8 +54,8 @@
             de: 'Pikante Suppe mit Zitronengras, frischem Gemüse, Tom-Yam-Paste, Zitronenblättern, Limettensaft, Koriander und Frühlingszwiebeln.',
             en: 'Spicy soup with lemongrass, fresh vegetables, Tom Yam paste, lime leaves, lime juice, coriander and spring onions.',
             img: IMG + 'd01-tom-yam.png',
-            opts: [['A. Tofu', 'Tofu', '4,70', 'veg'], ['B. Hühnerfleisch', 'Chicken', '4,90'],
-                   ['C. Garnelen', 'Shrimp', '5,50'], ['D. Lachs', 'Salmon', '5,50']]
+            opts: [['A. Tofu', 'Tofu', '4,70', 'veg', 'F'], ['B. Hühnerfleisch', 'Chicken', '4,90', '', 'D'],
+                   ['C. Garnelen', 'Shrimp', '5,50', '', 'B'], ['D. Lachs', 'Salmon', '5,50', '', 'C']]
           },
           {
             n: '2', name: 'Wantan Suppe', allerg: '9', price: '4,90',
@@ -66,8 +66,8 @@
             n: '3', name: 'Tom Kha Gai', allerg: 'G,C', tags: 'spicy',
             de: 'Würzige thailändische Tom-Kha-Suppe mit frischem Gemüse, Cherrytomaten, Lauchzwiebeln, Kokosmilch, Zitronengras, Chili, Limette und Koriander.',
             en: 'Spicy Thai Tom Kha soup with fresh vegetables, cherry tomatoes, spring onions, coconut milk, lemongrass, chili, lime and coriander.',
-            opts: [['A. Tofu', 'Tofu', '4,70', 'veg'], ['B. Hühnerfleisch', 'Chicken', '4,90'],
-                   ['C. Garnelen', 'Shrimp', '5,50']]
+            opts: [['A. Tofu', 'Tofu', '4,70', 'veg', 'F'], ['B. Hühnerfleisch', 'Chicken', '4,90'],
+                   ['C. Garnelen', 'Shrimp', '5,50', '', 'B']]
           },
           {
             n: '4', name: 'Gemischte Vorspeisenplatte', allerg: 'D,E,F,B', price: '14,90',
@@ -75,12 +75,12 @@
             en: '4 spring rolls, 2 fried prawns, 2 fried chicken wontons, 2 summer rolls, 2 grilled chicken skewers, mixed salad with unagi sauce and sweet & sour sauce.'
           },
           {
-            n: '5', name: 'Frühlingsrollen', allerg: 'D,14 / A,C,1',
+            n: '5', name: 'Frühlingsrollen',
             de: 'Knusprig gebratene Rollen, serviert mit süß-saurer Sauce.',
             en: 'Crispy fried rolls, served with a sweet and sour sauce.',
             img: IMG + 'd05b-fruehlingsrollen.png',
-            opts: [['A. Vegetarische Frühlingsrolle (8 Stk.)', 'Vegetables', '4,50', 'veg'],
-                   ['B. Hausgemachte Frühlingsrolle (2 Stk.) – Hühnerfleisch, Shiitake, Gemüse, Glasnudeln', 'Chicken, shiitake, vegetables, glass noodles', '5,50']]
+            opts: [['A. Vegetarische Frühlingsrolle (8 Stk.)', 'Vegetables', '4,50', 'veg', 'A1,5'],
+                   ['B. Hausgemachte Frühlingsrolle (2 Stk.) – Hühnerfleisch, Shiitake, Gemüse, Glasnudeln', 'Chicken, shiitake, vegetables, glass noodles', '5,50', '', 'A,C,1']]
           },
           {
             n: '6', name: 'Gebackene Chicken Wantan (5 Stk.)', allerg: 'D', price: '4,70',
@@ -110,7 +110,7 @@
             de: 'Frische Mangostreifen mit Koriander, Minze, Karotten, Chili, Erdnüssen und Fisch-Limetten-Dressing.',
             en: 'Fresh mango strips with cilantro, mint, carrots, chili, peanuts and fish-lime dressing.',
             img: IMG + 'd11-mango-mix.png',
-            opts: [['A. Tofu', 'Tofu', '7,00'], ['B. Hühnerfleisch mit Garnelen', 'Chicken with shrimp', '8,90']]
+            opts: [['A. Tofu', 'Tofu', '7,00', '', 'F'], ['B. Hühnerfleisch mit Garnelen', 'Chicken with shrimp', '8,90', '', 'B']]
           },
           {
             n: '12', name: 'Mikado Rindfleisch Salat', allerg: 'D,E,F,1', price: '8,90',
@@ -121,7 +121,7 @@
             n: '13', name: 'Hacao (5 Stk.)', allerg: '1',
             de: 'Gedämpfte asiatische Teigtaschen, serviert mit dunkler Teriyaki-Sauce.',
             en: 'Steamed Asian dumplings served with dark teriyaki sauce.',
-            opts: [['A. Gemüse', 'Vegetables', '5,00', 'veg'], ['C. Garnelen', 'Shrimp', '6,00']]
+            opts: [['A. Gemüse', 'Vegetables', '5,00', 'veg'], ['C. Garnelen', 'Shrimp', '6,00', '', 'B']]
           },
           {
             n: '14', name: 'Edamame', allerg: 'F', price: '5,50', tags: 'veg',
@@ -134,10 +134,10 @@
             de: 'Reispapier mit Reisnudeln, Wildkräutersalat, Gurke, gerösteten Erdnüssen, Sesam und Erdnusssauce.',
             en: 'Rice paper rolls with rice noodles, wild herb salad, cucumber, roasted peanuts, sesame and peanut sauce.',
             img: IMG + 'd15-sommerrolle.png',
-            opts: [['A. Gebackene Tofu-Stücke', 'Tofu', '5,00', 'veg'],
+            opts: [['A. Gebackene Tofu-Stücke', 'Tofu', '5,00', 'veg', 'F,D'],
                    ['B. Gegrilltes Hühnerfilet', 'Grilled chicken', '5,90'],
-                   ['C. Blanchierte Großgarnelen', 'Shrimp', '6,50'],
-                   ['D. Gegrillter Lachs', 'Grilled salmon', '6,50']]
+                   ['C. Blanchierte Großgarnelen', 'Shrimp', '6,50', '', 'B'],
+                   ['D. Gegrillter Lachs', 'Grilled salmon', '6,50', '', 'C']]
           },
           {
             n: '16', name: 'Gyoza (5 Stk.)', allerg: 'D,1',
@@ -157,11 +157,12 @@
             en: 'Pickled seaweed salad with a delicate sesame dressing, served with tender salmon cubes.'
           },
           {
-            n: '19', name: 'Tatar', allerg: 'C,L,F,G', tags: 'raw',
+            n: '19', name: 'Tatar', tags: 'raw',
             de: 'Frisch geschnittener Fisch mit hausgemachter Guacamole, Schnittlauch, Koriander, Sesamöl, Kresse und Kaviarcreme.',
             en: 'Freshly sliced fish with homemade guacamole, chives, cilantro, sesame oil, cress and caviar cream.',
             img: IMG + 'd19a-lachs-tatar.png',
-            opts: [['A. Lachs-Tatar', 'Salmon tartare', '10,50'], ['B. Tuna-Tatar', 'Tuna tartare', '11,50']]
+            opts: [['A. Lachs-Tatar', 'Salmon tartare', '10,50', '', 'C,L,F,G'],
+                   ['B. Tuna-Tatar', 'Tuna tartare', '11,50', '', 'C,L,F,G']]
           }
         ]
       },
@@ -206,10 +207,10 @@
             en: 'Grilled seafood (shrimp, salmon, tuna, scallops) with teriyaki, surimi and aioli sauce, served with fresh vegetables and sesame rice.'
           },
           {
-            n: '26', name: 'Rindfleisch', allerg: 'B,C,A,L / D,E,F,N,1,8,14',
+            n: '26', name: 'Rindfleisch',
             de: 'Zwei Klassiker vom Rind aus dem Wok.', en: 'Two beef classics from the wok.',
-            opts: [['A. Bo Luc Lac – Rindfleischwürfel mit Paprika und Zwiebeln in Chef-Sauce', 'Square-cut beef with bell peppers and onions in a premium chef sauce', '15,50'],
-                   ['B. Bo Xao Hanh – Rindfleisch mit Zwiebeln, Knoblauch, Lauch und Koriander', 'Stir-fried beef with onions, garlic, leeks and cilantro', '14,90']]
+            opts: [['A. Bo Luc Lac – Rindfleischwürfel mit Paprika und Zwiebeln in Chef-Sauce', 'Square-cut beef with bell peppers and onions in a premium chef sauce', '15,50', '', 'B,C,A,L'],
+                   ['B. Bo Xao Hanh – Rindfleisch mit Zwiebeln, Knoblauch, Lauch und Koriander', 'Stir-fried beef with onions, garlic, leeks and cilantro', '14,90', '', 'D,E,F,N,1,8,14']]
           },
           {
             n: '27', name: 'Yoga Bowl', allerg: 'F,L', price: '12,90', tags: 'veg',
@@ -226,10 +227,10 @@
             de: 'Gedämpftes buntes Gemüse – Edamame, Möhren, Brokkoli, Süßkartoffel und Mais – auf einem bunten Salatbett. Serviert mit Kokos-Curry-Sauce und Reis mit Sesam.',
             en: 'Steamed colorful vegetables – edamame, carrots, broccoli, sweet potato and corn – on a bed of mixed greens, with coconut curry sauce and sesame rice.',
             img: IMG + 'd29-mikado-bowl.png',
-            opts: [['A. Gebratener Tofu', 'Tofu', '11,90', 'veg'],
+            opts: [['A. Gebratener Tofu', 'Tofu', '11,90', 'veg', 'F'],
                    ['B. Gegrillte Hähnchenbrust', 'Grilled chicken', '13,90'],
-                   ['C. Gebackene Black Tiger Garnele', 'Black tiger shrimp', '15,90'],
-                   ['D. Gegrillter Lachs', 'Grilled salmon', '17,90']]
+                   ['C. Gebackene Black Tiger Garnele', 'Black tiger shrimp', '15,90', '', 'B,D'],
+                   ['D. Gegrillter Lachs', 'Grilled salmon', '17,90', '', 'C']]
           }
         ]
       },
@@ -267,21 +268,21 @@
             n: '41', name: 'Bun Tron – vietnamesische Spezialität', allerg: 'E,F',
             de: 'Reisnudeln mit frischen Kräutern, gemischtem Salat, Koriander, Erdnüssen und Röstzwiebeln – mit einer Zutat Ihrer Wahl.',
             en: 'Rice noodles with fresh herbs, mixed salad, coriander, peanuts and crispy fried onions – with a topping of your choice.',
-            opts: [['A. Tofu', 'Tofu', '11,90', 'veg'], ['B. Hühnerfleisch', 'Chicken', '13,90'],
+            opts: [['A. Tofu', 'Tofu', '11,90', 'veg', 'F'], ['B. Hühnerfleisch', 'Chicken', '13,90', '', 'D'],
                    ['C. Rindfleisch', 'Beef', '14,90'],
-                   ['D. Vietnamesische Frühlingsrollen', 'Vietnamese spring rolls', '13,90'],
-                   ['E. Hackfleischröllchen in Lolot-Blättern (Rind und Hähnchen)', 'Minced beef & chicken rolls in lolot leaves', '15,90']]
+                   ['D. Vietnamesische Frühlingsrollen', 'Vietnamese spring rolls', '13,90', '', 'A,C,1'],
+                   ['E. Hackfleischröllchen in Lolot-Blättern (Rind und Hähnchen)', 'Minced beef & chicken rolls in lolot leaves', '15,90', '', '1']]
           },
           {
             n: '42', name: 'Bratnudeln oder Bratreis mit Ei', allerg: 'D,A,E,F,1,8,14',
             de: 'Gebratene Nudeln oder Reis mit Ei und verschiedenem gebratenem Gemüse in Sweet-Chili-Soße.',
             en: 'Fried noodles or rice with egg and mixed stir-fried vegetables in sweet chili sauce.',
             img: IMG + 'd42-bratnudeln.png',
-            opts: [['A. Tofu', 'Tofu', '11,50', 'veg'], ['B. Hühnerfleisch', 'Chicken breast', '12,50'],
-                   ['C. Gebackenes Hühnerfleisch', 'Baked chicken', '12,90'],
-                   ['D. Knusprige Ente', 'Crispy duck', '13,00'],
+            opts: [['A. Tofu', 'Tofu', '11,50', 'veg', 'F'], ['B. Hühnerfleisch', 'Chicken breast', '12,50', '', 'D'],
+                   ['C. Gebackenes Hühnerfleisch', 'Baked chicken', '12,90', '', 'D'],
+                   ['D. Knusprige Ente', 'Crispy duck', '13,00', '', 'D'],
                    ['E. Huhn kross gebacken', 'Crispy fried chicken', '12,50'],
-                   ['F. Garnelen', 'Shrimp', '13,90'], ['G. Rindfleisch', 'Beef', '13,50']]
+                   ['F. Garnelen', 'Shrimp', '13,90', '', 'B'], ['G. Rindfleisch', 'Beef', '13,50', '', '1']]
           }
         ]
       },
@@ -296,7 +297,7 @@
             de: 'Traditionelle vietnamesische Suppe mit Reisbandnudeln in kräftiger Rinderbrühe, verfeinert mit frischen Frühlingszwiebeln, Koriander, Minze und weißem Pfeffer.',
             en: 'Traditional Vietnamese soup with flat rice noodles in a rich beef broth, refined with fresh spring onions, cilantro, mint and white pepper.',
             img: IMG + 'd34-pho.png',
-            opts: [['A. Tofu', 'Tofu', '11,90', 'veg'], ['B. Hähnchenbrustfilet', 'Chicken breast', '13,90'],
+            opts: [['A. Tofu', 'Tofu', '11,90', 'veg', 'F'], ['B. Hähnchenbrustfilet', 'Chicken breast', '13,90'],
                    ['G. Rindfleisch', 'Beef', '14,90']]
           },
           {
@@ -342,7 +343,7 @@
             n: '39', name: 'Süß-Sauer-Soße', allerg: 'D',
             de: 'Süß-Sauer-Soße, serviert auf frischem Gemüse mit Reis und Sesam.',
             en: 'Sweet and sour sauce, served on fresh vegetables with sesame rice.',
-            opts: [['A. Vegetarisch (Tofu)', 'Tofu', '11,50', 'veg']].concat(WOK.slice(1))
+            opts: [['A. Vegetarisch (Tofu)', 'Tofu', '11,50', 'veg', 'F']].concat(WOK.slice(1))
           }
         ]
       },
