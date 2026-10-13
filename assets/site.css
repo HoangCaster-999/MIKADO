@@ -811,3 +811,31 @@ a { color: inherit; }
   .dish { break-inside: avoid; border-color: #ccc; background: none; }
   .dish__de, .dish__price, .dish__name, .opts li { color: #000; }
 }
+
+/* Bestellung und Tischanfrage */
+.request-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
+.request-grid > * { min-width: 0; }
+.request-form { display: grid; gap: 18px; }
+.request-form .btn { white-space: normal; }
+.request-form label { display: grid; gap: 6px; font-size: 14px; }
+.request-form input, .request-form textarea, .dish__order select {
+  width: 100%; min-width: 0; padding: 12px; border: 1px solid var(--line-soft);
+  border-radius: 6px; background: var(--ink-3); color: var(--text); font: inherit; color-scheme: dark;
+}
+.request-form textarea { resize: vertical; }
+.request-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.request-note { font-size: 13px; color: var(--muted-2); }
+.request-error { color: #ffb4a5; margin: 0; }
+.request-error:empty { display: none; }
+.dish__order { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.dish__order select { flex: 1 1 180px; width: auto; font-size: 13px; }
+.cart-row { display: grid; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
+.cart-row__controls { display: flex; align-items: center; gap: 12px; }
+.cart-row__controls button { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 6px; background: var(--ink-3); color: var(--gold); font-size: 20px; cursor: pointer; }
+.cart-row__controls strong { margin-left: auto; }
+.cart-total { display: flex; justify-content: space-between; font-size: 20px; padding-top: 16px; }
+.btn:disabled, .cart-row__controls button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+@media (max-width: 760px) {
+  .request-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .request-fields { gap: 10px; }
+}

@@ -57,7 +57,7 @@
       <a href="#galerie">Galerie</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="btn btn--gold btn--sm nav__cta" href="tel:+4949419901764">Tisch reservieren</a>
+    <a class="btn btn--gold btn--sm nav__cta" href="#reservieren">Tisch reservieren</a>
     <button class="burger" id="nav-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links"><span></span></button>
   </div>
 </header>
@@ -81,7 +81,7 @@
         <p class="hero__lead">Frisches Sushi, feine japanische Spezialitäten und die herzhafte Küche Südostasiens – mitten in Ostfriesland.</p>
         <div class="hero__cta">
           <a class="btn btn--gold" href="tel:+4949419901764">04941 990 1764</a>
-          <a class="btn btn--ghost" href="#karte">Speisekarte ansehen</a>
+          <a class="btn btn--ghost" href="#karte">Jetzt bestellen</a>
         </div>
         <ul class="hero__facts">
           <li><b>Küche</b><span>Japanisch · Thai · Vietnamesisch</span></li>
@@ -235,7 +235,7 @@
           <p class="buffet__price">18,90 €<small>pro Person</small></p>
           <p>Kinder von 4 bis 12 Jahren zahlen 1,20 € pro Lebensjahr.</p>
           <p>Privatfeiern ab 15 Personen sind nach Vereinbarung auch unter der Woche möglich.</p>
-          <p style="margin-top:18px"><a class="btn btn--gold" href="tel:+4949419901764">Platz sichern</a></p>
+          <p style="margin-top:18px"><a class="btn btn--gold" href="#reservieren">Platz sichern</a></p>
         </div>
         <ul class="buffet__times">
           <li><b>Freitag</b><span>17:30 – 21:00 Uhr</span></li>
@@ -267,6 +267,7 @@
         <input type="search" id="menu-search" placeholder="Gericht, Nummer oder Zutat suchen…" autocomplete="off">
         <button class="search__clear" id="menu-search-clear" type="button" aria-label="Suche zurücksetzen">×</button>
       </div>
+      <a class="btn btn--ghost btn--sm" href="#bestellen">Bestellung <span id="cart-count">(0)</span></a>
       <div class="filters" role="group" aria-label="Karte filtern">
         <button class="chip" type="button" data-filter="alle" aria-pressed="true">Alle</button>
         <button class="chip" type="button" data-filter="veg" aria-pressed="false">Vegetarisch</button>
@@ -301,6 +302,55 @@
     </div>
   </section>
   </div><!-- /.menu-scope -->
+
+  <section class="section section--sea" id="bestellen">
+    <div class="shell request-grid">
+      <div>
+        <p class="eyebrow">Zum Mitnehmen</p>
+        <h2 class="title">Ihre Bestellung</h2>
+        <p>Wählen Sie Gerichte und Varianten in der <a href="#karte">Speisekarte</a>.</p>
+        <div id="cart-items"></div>
+        <p class="cart-total">Gesamt <strong id="cart-total">0,00 €</strong></p>
+        <p id="cart-status" class="request-note" role="status" aria-live="polite"></p>
+      </div>
+      <form id="order-form" class="request-form">
+        <label>Name<input name="name" autocomplete="name" maxlength="100" required></label>
+        <label>Telefon<input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label>
+        <div class="request-fields">
+          <label>Abholdatum<input name="date" type="date" required></label>
+          <label>Abholzeit<input name="time" type="time" required></label>
+        </div>
+        <label>Hinweise / Allergien<textarea name="notes" rows="3" maxlength="1000"></textarea></label>
+        <p class="request-note">Alle Zeiten gelten für Aurich. WhatsApp öffnet sich mit Ihrer Anfrage. Bitte dort auf Senden tippen. Die Bestellung gilt erst nach unserer Bestätigung.</p>
+        <p class="request-error" role="alert"></p>
+        <button class="btn btn--gold" type="submit">Bestellung per WhatsApp anfragen</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="reservieren">
+    <div class="shell request-grid">
+      <div>
+        <p class="eyebrow">Gemeinsam genießen</p>
+        <h2 class="title">Tisch reservieren</h2>
+        <p class="lede">Ihr Wunschtermin, die Personenzahl und ein kurzer Gruß – senden Sie uns Ihre Tischanfrage per WhatsApp.</p>
+        <p class="request-note">Die Reservierung gilt erst nach unserer Bestätigung. Für kurzfristige Anfragen erreichen Sie uns unter <a href="tel:+4949419901764">04941 990 1764</a>.</p>
+      </div>
+      <form id="reservation-form" class="request-form">
+        <label>Name<input name="name" autocomplete="name" maxlength="100" required></label>
+        <label>Telefon<input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label>
+        <div class="request-fields">
+          <label>Datum<input name="date" type="date" required></label>
+          <label>Uhrzeit<input name="time" type="time" required></label>
+        </div>
+        <label>Personen<input name="guests" type="number" min="1" max="100" step="1" value="2" required></label>
+        <label>Wünsche / Anlass<textarea name="notes" rows="3" maxlength="1000"></textarea></label>
+        <p class="request-note">Alle Zeiten gelten für Aurich. Bitte die vorbereitete Nachricht in WhatsApp absenden.</p>
+        <p class="request-error" role="alert"></p>
+        <button class="btn btn--gold" type="submit">Tisch per WhatsApp anfragen</button>
+      </form>
+    </div>
+  </section>
 
   <!-- ============================================================ SUSHI-KUNDE -->
   <section class="section section--paper" id="sushi">
@@ -375,7 +425,7 @@
         <p class="eyebrow">Besuchen Sie uns</p>
         <h2 class="title">Ihr Tisch <em>wartet</em>.</h2>
         <div class="rule" aria-hidden="true"><i></i></div>
-        <p class="lede" style="margin:0">Reservierungen nehmen wir gerne telefonisch entgegen. Alle Gerichte gibt es auch zum Mitnehmen.</p>
+        <p class="lede" style="margin:0">Bestellen Sie zum Mitnehmen oder fragen Sie Ihren Tisch per WhatsApp an. Gerne sind wir auch telefonisch für Sie da.</p>
 
         <ul class="facts">
           <li><b>Adresse</b><span><a href="https://share.google/xjBxgUn1EsnJE5B0c" target="_blank" rel="noopener">Leerer Landstraße 1<br>26603 Aurich</a></span></li>
@@ -499,6 +549,7 @@
 </script>
 
 <script src="assets/menu-data.js"></script>
+<script src="assets/requests.js"></script>
 <script src="assets/menu.js"></script>
 <script src="assets/app.js"></script>
 </body>

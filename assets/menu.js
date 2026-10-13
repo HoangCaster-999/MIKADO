@@ -103,7 +103,18 @@
     return out.length ? '<div class="badges">' + out.join('') + '</div>' : '';
   }
 
-  function dishHtml(item) {
+  function orderControls(item, group) {
+    var key = group.id + ':' + group.items.indexOf(item);
+    var options = item.opts || [];
+    if (!item.price && !options.length) return '';
+    return '<div class="dish__order">' + (options.length
+      ? '<select aria-label="Variante für ' + esc(item.name) + '"><option value="">Variante wählen</option>' + options.map(function (o, index) {
+          return '<option value="' + index + '">' + esc(o[0]) + ' · ' + esc(o[2]) + ' €</option>';
+        }).join('') + '</select>' : '') +
+      '<button class="btn btn--ghost btn--sm" type="button" data-add="' + esc(key) + '" aria-label="' + esc(item.name) + ' hinzufügen">+ Hinzufügen</button></div>';
+  }
+
+  function dishHtml(item, group) {
     var withPhoto = !!item.img;
     var lead = withPhoto
       ? '<figure class="dish__thumb"><img src="' + esc(item.img) + '" alt="' + esc(item.name) +
@@ -118,7 +129,7 @@
         (item.meta ? '<p class="dish__meta">' + esc(item.meta) + '</p>' : '') +
         (item.de ? '<p class="dish__de">' + esc(item.de) + '</p>' : '') +
         (item.en ? '<p class="dish__en">' + esc(item.en) + '</p>' : '') +
-        optsBlock(item) + badgesBlock(item) +
+        optsBlock(item) + badgesBlock(item) + orderControls(item, group) +
       '</div></article>';
   }
 
@@ -133,7 +144,7 @@
       (group.note ? '<p class="mgroup__note">' + esc(group.note) + '</p>' : '') +
       '<div class="mgroup__bar"></div>' +
       '<div class="mlist' + (wide ? ' mlist--wide' : '') + '">' +
-        items.map(dishHtml).join('') +
+        items.map(function (item) { return dishHtml(item, group); }).join('') +
       '</div></section>';
   }
 
@@ -191,6 +202,22 @@
       });
       render();
     });
+  });
+
+  root.addEventListener('click', function (e) {
+    var button = e.target.closest('[data-add]');
+    if (!button) return;
+    var select = button.parentElement.querySelector('select');
+    if (select && select.value === '') {
+      select.setCustomValidity('Bitte wählen Sie eine Variante.');
+      select.reportValidity();
+      select.focus();
+      return;
+    }
+    window.MIKADO_REQUESTS.add(button.getAttribute('data-add'), select ? Number(select.value) : null);
+  });
+  root.addEventListener('change', function (e) {
+    if (e.target.tagName === 'SELECT') e.target.setCustomValidity('');
   });
 
   var timer;
