@@ -86,6 +86,23 @@ const path = require('node:path');
   await page.screenshot({ path: 'output/requests-desktop.png' });
   await page.locator('.cart-row').first().getByRole('button', { name: /verringern/ }).click();
   assert.equal(await page.locator('#cart-shortcut').isVisible(), false);
+  const formHeights = () => page.locator('#order-form, #order-form input, #order-form textarea, #order-form button[type="submit"]').evaluateAll(elements => elements.map(el => Math.round(el.getBoundingClientRect().height)));
+  const emptyFormHeights = await formHeights();
+  await page.evaluate(() => {
+    const group = window.MIKADO_MENU.groups[0];
+    group.items.slice(0, 12).forEach((item, index) => {
+      window.MIKADO_REQUESTS.add(group.id + ':' + index, item.opts ? 0 : null);
+    });
+  });
+  assert.equal(await page.locator('.cart-row').count(), 12);
+  assert.deepEqual(await formHeights(), emptyFormHeights, 'A long cart must not stretch the order form or its controls');
+  await page.locator('#order-form').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'output/requests-many-desktop.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobileHeights = await formHeights();
+  assert.deepEqual(mobileHeights.slice(1, -1), emptyFormHeights.slice(1, -1));
+  await page.locator('#order-form').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'output/requests-many-mobile.png' });
   assert.deepEqual(errors, []);
   await browser.close();
   console.log('PASS: variants, quantities, totals, search, WhatsApp order/reservation messages, missing recipient, mobile width.');
