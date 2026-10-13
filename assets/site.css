@@ -813,6 +813,20 @@ a { color: inherit; }
 }
 
 /* Bestellung und Tischanfrage */
+body.has-cart { padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)); }
+.cart-shortcut {
+  position: fixed; z-index: 70; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  width: min(440px, calc(100% - 40px)); display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 18px 22px; border-radius: 12px; background: var(--gold); color: #1c1205;
+  text-decoration: none; box-shadow: 0 6px 28px rgba(0, 0, 0, .5);
+  transition: background-color .2s;
+}
+.cart-shortcut[hidden] { display: none; }
+.cart-shortcut:hover { background: var(--gold-soft); }
+.cart-shortcut__summary { font-size: 13px; }
+.cart-shortcut__action { font-size: 14px; font-weight: 700; }
+#order-form { scroll-margin-top: 20px; }
+@media print { .cart-shortcut { display: none; } body.has-cart { padding-bottom: 0; } }
 .request-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
 .request-grid > * { min-width: 0; }
 .request-form { display: grid; gap: 18px; }

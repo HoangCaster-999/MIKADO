@@ -4,6 +4,7 @@ window.MIKADO_WHATSAPP = '4949419901764';
 (function () {
   'use strict';
   var cart = [];
+  var orderFormVisible = false;
   var money = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
   function cents(price) {
     return Math.round(Number(String(price).replace(/\./g, '').replace(',', '.')) * 100);
@@ -79,7 +80,11 @@ window.MIKADO_WHATSAPP = '4949419901764';
       root.append(line);
     });
     document.getElementById('cart-total').textContent = money.format(total() / 100);
-    document.getElementById('cart-count').textContent = '(' + cart.reduce(function (sum, row) { return sum + row.quantity; }, 0) + ')';
+    var count = cart.reduce(function (sum, row) { return sum + row.quantity; }, 0);
+    document.getElementById('cart-count').textContent = '(' + count + ')';
+    document.getElementById('cart-shortcut-summary').textContent = count + (count === 1 ? ' Gericht' : ' Gerichte') + ' · ' + money.format(total() / 100);
+    document.getElementById('cart-shortcut').hidden = !count || orderFormVisible;
+    document.body.classList.toggle('has-cart', count > 0);
     document.querySelector('#order-form button[type="submit"]').disabled = !cart.length;
   }
   function add(key, variant) {
@@ -96,6 +101,13 @@ window.MIKADO_WHATSAPP = '4949419901764';
     document.getElementById('cart-status').textContent = next.label + ' hinzugefügt.';
   }
   window.MIKADO_REQUESTS = { add: add };
+  if ('IntersectionObserver' in window) {
+    var formObserver = new IntersectionObserver(function (entries) {
+      orderFormVisible = entries[0].isIntersecting;
+      document.getElementById('cart-shortcut').hidden = !cart.length || orderFormVisible;
+    }, { rootMargin: '-80px 0px -80px 0px' });
+    formObserver.observe(document.getElementById('order-form'));
+  }
   ['order', 'reservation'].forEach(function (kind) {
     var form = document.getElementById(kind + '-form');
     form.elements.date.min = berlinNow().slice(0, 10);
