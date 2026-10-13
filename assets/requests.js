@@ -47,6 +47,7 @@ window.MIKADO_WHATSAPP = '4949419901764';
   }
   function render() {
     var root = document.getElementById('cart-items');
+    var scrollTop = root.scrollTop;
     root.replaceChildren();
     if (!cart.length) root.textContent = 'Noch keine Gerichte ausgewählt.';
     cart.forEach(function (row) {
@@ -79,6 +80,7 @@ window.MIKADO_WHATSAPP = '4949419901764';
       line.append(name, controls);
       root.append(line);
     });
+    root.scrollTop = scrollTop;
     document.getElementById('cart-total').textContent = money.format(total() / 100);
     var count = cart.reduce(function (sum, row) { return sum + row.quantity; }, 0);
     document.getElementById('cart-count').textContent = '(' + count + ')';
