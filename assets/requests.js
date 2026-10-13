@@ -135,7 +135,7 @@ window.MIKADO_WHATSAPP = '4949419901764';
         error.textContent = 'WhatsApp ist derzeit nicht verfügbar. Bitte rufen Sie uns an: 04941 990 1764.';
         return;
       }
-      window.location.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message(kind, details));
+      window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(message(kind, details)), '_blank', 'noopener,noreferrer');
     });
   });
   render();
