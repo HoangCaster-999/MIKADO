@@ -1,5 +1,5 @@
 /* WhatsApp recipient: international digits only, without + or spaces. */
-window.MIKADO_WHATSAPP = '4949419901764';
+window.MIKADO_WHATSAPP = '4917614670566';
 
 (function () {
   'use strict';
