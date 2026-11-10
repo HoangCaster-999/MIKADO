@@ -5,6 +5,9 @@ window.MIKADO_WHATSAPP = '4917614670566';
   'use strict';
   var cart = [];
   var orderFormVisible = false;
+  var delivery = false;
+  var DELIVERY_FEE = 200;
+  var DELIVERY_MIN = 3000;
   var money = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
   function cents(price) {
     return Math.round(Number(String(price).replace(/\./g, '').replace(',', '.')) * 100);
@@ -21,8 +24,11 @@ window.MIKADO_WHATSAPP = '4917614670566';
     return { key: key + ':' + variant, label: (item.n ? item.n + ' · ' : '') + item.name +
       (option ? ' – ' + option[0] : ''), price: price, quantity: 1 };
   }
-  function total() {
+  function subtotal() {
     return cart.reduce(function (sum, row) { return sum + row.price * row.quantity; }, 0);
+  }
+  function total() {
+    return subtotal() + (delivery && cart.length ? DELIVERY_FEE : 0);
   }
   function berlinNow() {
     var parts = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Berlin',
@@ -33,13 +39,19 @@ window.MIKADO_WHATSAPP = '4917614670566';
     return values.year + '-' + values.month + '-' + values.day + 'T' + values.hour + ':' + values.minute;
   }
   function message(kind, details) {
-    var lines = ['MIKADO – ' + (kind === 'order' ? 'Bestellanfrage (Abholung)' : 'Tischanfrage'),
+    var lines = ['MIKADO – ' + (kind === 'order' ? 'Bestellanfrage (' + (delivery ? 'Lieferung' : 'Abholung') + ')' : 'Tischanfrage'),
       'Name: ' + details.name.trim(), 'Telefon: ' + details.phone.trim(),
       'Datum: ' + details.date.split('-').reverse().join('.'), 'Uhrzeit: ' + details.time + ' Uhr (Aurich)'];
     if (kind === 'order') {
       lines.push('', 'Gerichte:');
       cart.forEach(function (row) { lines.push(row.quantity + ' × ' + row.label + ' = ' + money.format(row.price * row.quantity / 100)); });
+      if (delivery) {
+        lines.push('Zwischensumme: ' + money.format(subtotal() / 100));
+        lines.push('Liefergebühr: ' + money.format(DELIVERY_FEE / 100));
+      }
       lines.push('Gesamt: ' + money.format(total() / 100));
+      if (delivery) lines.push('', 'Lieferadresse: ' + details.address.trim(),
+        'Lieferbedingungen (5–7 km, ab 30 €, 2 € Liefergebühr) akzeptiert.');
     } else lines.push('Personen: ' + details.guests);
     if (details.notes.trim()) lines.push('', 'Hinweise: ' + details.notes.trim());
     lines.push('', 'Bitte bestätigen Sie meine Anfrage. Vielen Dank!');
@@ -82,6 +94,8 @@ window.MIKADO_WHATSAPP = '4917614670566';
     });
     root.scrollTop = scrollTop;
     document.getElementById('cart-total').textContent = money.format(total() / 100);
+    document.getElementById('cart-subtotal').textContent = money.format(subtotal() / 100);
+    document.getElementById('cart-delivery-lines').hidden = !delivery;
     var count = cart.reduce(function (sum, row) { return sum + row.quantity; }, 0);
     document.getElementById('cart-count').textContent = '(' + count + ')';
     document.getElementById('cart-shortcut-summary').textContent = count + (count === 1 ? ' Gericht' : ' Gerichte') + ' · ' + money.format(total() / 100);
@@ -103,6 +117,32 @@ window.MIKADO_WHATSAPP = '4917614670566';
     document.getElementById('cart-status').textContent = next.label + ' hinzugefügt.';
   }
   window.MIKADO_REQUESTS = { add: add };
+  function setMode(isDelivery) {
+    var form = document.getElementById('order-form');
+    delivery = isDelivery;
+    form.elements.mode.value = isDelivery ? 'delivery' : 'pickup';
+    document.getElementById('delivery-info').hidden = !isDelivery;
+    document.getElementById('address-field').hidden = !isDelivery;
+    form.elements.address.required = isDelivery;
+    form.querySelector('[data-mode-label="date"]').textContent = isDelivery ? 'Lieferdatum' : 'Abholdatum';
+    form.querySelector('[data-mode-label="time"]').textContent = isDelivery ? 'Lieferzeit' : 'Abholzeit';
+    render();
+  }
+  var deliveryDialog = document.getElementById('delivery-dialog');
+  deliveryDialog.addEventListener('close', function () {
+    setMode(deliveryDialog.returnValue === 'ok');
+    var radios = document.getElementById('order-form').elements.mode;
+    radios[delivery ? 1 : 0].focus();
+  });
+  document.getElementById('order-form').addEventListener('change', function (event) {
+    if (event.target.name !== 'mode') return;
+    if (event.target.value === 'pickup') { setMode(false); return; }
+    if (delivery) return;
+    if (typeof deliveryDialog.showModal === 'function') {
+      deliveryDialog.returnValue = '';
+      deliveryDialog.showModal();
+    } else setMode(window.confirm('Wir liefern nur im Umkreis von 5–7 km, ab einem Bestellwert von 30,00 € und mit 2,00 € Liefergebühr pro Bestellung. Wenn Sie diese Bedingungen erfüllen, bestätigen Sie bitte mit OK.'));
+  });
   if ('IntersectionObserver' in window) {
     var formObserver = new IntersectionObserver(function (entries) {
       orderFormVisible = entries[0].isIntersecting;
@@ -128,6 +168,14 @@ window.MIKADO_WHATSAPP = '4917614670566';
       }
       if (kind === 'order' && !cart.length) {
         error.textContent = 'Bitte wählen Sie zuerst ein Gericht aus.';
+        return;
+      }
+      if (kind === 'order' && delivery && subtotal() < DELIVERY_MIN) {
+        error.textContent = 'Der Mindestbestellwert für Lieferungen beträgt 30,00 € (aktuell ' + money.format(subtotal() / 100) + ').';
+        return;
+      }
+      if (kind === 'order' && delivery && !details.address.trim()) {
+        error.textContent = 'Bitte geben Sie Ihre Lieferadresse ein.';
         return;
       }
       var phone = window.MIKADO_WHATSAPP;

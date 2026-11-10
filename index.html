@@ -306,20 +306,28 @@
   <section class="section section--sea" id="bestellen">
     <div class="shell request-grid">
       <div>
-        <p class="eyebrow">Zum Mitnehmen</p>
+        <p class="eyebrow">Abholung &amp; Lieferung</p>
         <h2 class="title">Ihre Bestellung</h2>
         <p>Wählen Sie Gerichte und Varianten in der <a href="#karte">Speisekarte</a>.</p>
         <div id="cart-items" role="region" aria-label="Ausgewählte Gerichte" tabindex="0"></div>
+        <p class="cart-subline" id="cart-delivery-lines" hidden><span>Zwischensumme <strong id="cart-subtotal">0,00 €</strong></span><span>Liefergebühr <strong>2,00 €</strong></span></p>
         <p class="cart-total">Gesamt <strong id="cart-total">0,00 €</strong></p>
         <p id="cart-status" class="request-note" role="status" aria-live="polite"></p>
       </div>
       <form id="order-form" class="request-form">
+        <fieldset class="order-mode">
+          <legend>Art der Bestellung</legend>
+          <label><input type="radio" name="mode" value="pickup" checked><span>Abholung</span></label>
+          <label><input type="radio" name="mode" value="delivery"><span>Lieferung</span></label>
+        </fieldset>
+        <p class="request-note" id="delivery-info" hidden>Lieferung im Umkreis von 5–7 km · Mindestbestellwert 30,00 € · Liefergebühr 2,00 € pro Bestellung</p>
         <label>Name<input name="name" autocomplete="name" maxlength="100" required></label>
         <label>Telefon<input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label>
         <div class="request-fields">
-          <label>Abholdatum<input name="date" type="date" required></label>
-          <label>Abholzeit<input name="time" type="time" required></label>
+          <label><span data-mode-label="date">Abholdatum</span><input name="date" type="date" required></label>
+          <label><span data-mode-label="time">Abholzeit</span><input name="time" type="time" required></label>
         </div>
+        <label id="address-field" hidden>Lieferadresse (Straße, Hausnummer, PLZ, Ort)<textarea name="address" rows="2" maxlength="300" autocomplete="street-address"></textarea></label>
         <label>Hinweise / Allergien<textarea name="notes" rows="3" maxlength="1000"></textarea></label>
         <p class="request-note">Alle Zeiten gelten für Aurich. WhatsApp öffnet sich mit Ihrer Anfrage in einem neuen Tab. Bitte dort auf Senden tippen. Die Bestellung gilt erst nach unserer Bestätigung.</p>
         <p class="request-error" role="alert"></p>
@@ -474,6 +482,23 @@
     </div>
   </section>
 </main>
+
+<dialog class="delivery-dialog" id="delivery-dialog" aria-labelledby="delivery-dialog-title">
+  <form method="dialog">
+    <h2 id="delivery-dialog-title">Lieferbedingungen</h2>
+    <p>Wir liefern nur unter folgenden Bedingungen:</p>
+    <ul>
+      <li>Lieferung im Umkreis von <strong>5–7 km</strong></li>
+      <li>Mindestbestellwert <strong>30,00 €</strong></li>
+      <li>Liefergebühr <strong>2,00 €</strong> pro Bestellung</li>
+    </ul>
+    <p>Wenn Sie diese Bedingungen erfüllen, tippen Sie bitte auf „Einverstanden“.</p>
+    <div class="delivery-dialog__actions">
+      <button class="btn btn--ghost btn--sm" value="cancel">Abbrechen</button>
+      <button class="btn btn--gold btn--sm" value="ok">Einverstanden</button>
+    </div>
+  </form>
+</dialog>
 
 <a class="cart-shortcut" id="cart-shortcut" href="#order-form" hidden>
   <span class="cart-shortcut__summary" id="cart-shortcut-summary"></span>
