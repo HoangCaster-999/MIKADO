@@ -51,7 +51,8 @@ window.MIKADO_WHATSAPP = '4917614670566';
       }
       lines.push('Gesamt: ' + money.format(total() / 100));
       if (delivery) lines.push('', 'Lieferadresse: ' + details.address.trim(),
-        'Lieferbedingungen (5–7 km, ab 30 €, 2 € Liefergebühr) akzeptiert.');
+        'Zahlung: nur bar bei Lieferung.',
+        'Lieferbedingungen (5–7 km, ab 30 €, 2 € Liefergebühr, nur Barzahlung) akzeptiert.');
     } else lines.push('Personen: ' + details.guests);
     if (details.notes.trim()) lines.push('', 'Hinweise: ' + details.notes.trim());
     lines.push('', 'Bitte bestätigen Sie meine Anfrage. Vielen Dank!');
@@ -141,7 +142,7 @@ window.MIKADO_WHATSAPP = '4917614670566';
     if (typeof deliveryDialog.showModal === 'function') {
       deliveryDialog.returnValue = '';
       deliveryDialog.showModal();
-    } else setMode(window.confirm('Wir liefern nur im Umkreis von 5–7 km, ab einem Bestellwert von 30,00 € und mit 2,00 € Liefergebühr pro Bestellung. Wenn Sie diese Bedingungen erfüllen, bestätigen Sie bitte mit OK.'));
+    } else setMode(window.confirm('Wir liefern nur im Umkreis von 5–7 km, ab einem Bestellwert von 30,00 € mit 2,00 € Liefergebühr pro Bestellung und nur gegen Barzahlung. Wenn Sie diese Bedingungen erfüllen, bestätigen Sie bitte mit OK.'));
   });
   if ('IntersectionObserver' in window) {
     var formObserver = new IntersectionObserver(function (entries) {

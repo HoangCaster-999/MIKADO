@@ -45,6 +45,7 @@ const path = require('node:path');
   assert.match(msg, /Bestellanfrage \(Lieferung\)/);
   assert.match(msg, /Liefergebühr: 2,00/);
   assert.match(msg, /Lieferadresse: Teststr/);
+  assert.match(msg, /nur bar/);
   await page.locator('#bestellen').screenshot({ path: 'output/delivery-form-mobile.png' });
   assert.deepEqual(errors, []);
   console.log(msg);
