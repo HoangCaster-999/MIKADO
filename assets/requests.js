@@ -1,5 +1,5 @@
 /* WhatsApp recipient: international digits only, without + or spaces. */
-window.MIKADO_WHATSAPP = '4917614670566';
+window.MIKADO_WHATSAPP = '4915906807259';
 
 (function () {
   'use strict';
@@ -181,7 +181,7 @@ window.MIKADO_WHATSAPP = '4917614670566';
       }
       var phone = window.MIKADO_WHATSAPP;
       if (!/^[1-9]\d{6,14}$/.test(phone)) {
-        error.textContent = 'WhatsApp ist derzeit nicht verfügbar. Bitte rufen Sie uns an: 04941 990 1764.';
+        error.textContent = 'WhatsApp ist derzeit nicht verfügbar. Bitte rufen Sie uns an: +49 1590 6807259.';
         return;
       }
       window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(message(kind, details)), '_blank', 'noopener,noreferrer');

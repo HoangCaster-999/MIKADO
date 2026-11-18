@@ -173,7 +173,7 @@ Lưu ý QR đi qua dịch vụ rút gọn me-qr.com — nếu dịch vụ đó n
 ## Thông tin nhà hàng (đang dùng trong trang)
 
 - Leerer Landstraße 1, 26603 Aurich
-- Tel. 04941 990 1764
+- Tel. +49 1590 6807259
 - Mo., Mi., Do., Fr. 11:00–15:00 và 17:00–22:00 · Sa., So. 12:00–22:00 · Di. Ruhetag
 - Buffet + Sushi 18,90 € — Fr. & Sa. 17:30–21:00, So. 12:00–14:00 & 17:30–21:00
 - Trẻ em 4–12 tuổi: 1,20 €/tuổi
